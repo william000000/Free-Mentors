@@ -19,13 +19,13 @@ body{
 #sidebar ul{
   padding-left: 0;
 }
-#sidebar ul li{
+#sidebar ul li,#sidebar ul li a{
   color: white;
   padding: 15px 15px;
   border-bottom: 1px solid whitesmoke;
   list-style: none;
 }
-#sidebar ul li:hover{
+#sidebar ul li a:hover{
   background: rgb(112, 111, 111);
 }
 #close{
@@ -38,7 +38,7 @@ body{
   cursor: pointer;
   border-radius: 5px;
 }
-/*navigation baR*/
+/*navigation baR-----------------------------*/
 nav{
   position: sticky;
   left: 0;
@@ -113,13 +113,13 @@ nav ul li a:hover{
   max-height: 200px;
 }
 
-/*navigation header*/
+/*navigation header------------------------*/
 #header-nav{
   padding: 3px 0;
   /* box-sizing: border-box; */
   margin-top: 0;
   background: rgb(14, 17, 34);
-  width: 100%;
+  width: 100%; 
   height: 38px;
 
 }
@@ -135,7 +135,6 @@ header ul{
   margin-top: -8px;
   padding: 0 80px;
   margin-left: 500px; 
-  /* background: red; */
 }
 header ul li{
   color: white;
@@ -153,9 +152,11 @@ header ul li a{
   border: 1px solid black;
   border-radius: 5px;
 }
-/*Content login*/
+
+/*Content login----------------*/
+
 .container-login{
-  position: absolute;
+  position: inherit;
   background: white;
   width: 100%;
   max-width: 830px;
@@ -163,6 +164,7 @@ header ul li a{
   max-height: 300px;
   margin: 0 265px;
   border-radius: 10px;
+  z-index: -1;
 }
 .login-form .users, .login-form .passcode{
   display: inline-flex;
@@ -238,7 +240,7 @@ header ul li a{
   font-size: 20px;
 }
 
-/*Responsiveness of my app*/
+/*Responsiveness of my app------------------*/
 
 @media(max-width: 690px){
   .nav-menu ul{
@@ -264,4 +266,83 @@ header ul li a{
   } 
   
 }
-/*End Responsive part*/
+/*End Responsive part-------*/
+
+/*Container Signup-------------------------*/
+.containerSignup{
+  position: inherit;
+  z-index: -1;
+  background: white;
+  width: 100%;
+  max-width: 830px;
+  height: 100%;
+  max-height: 800px;
+  margin: 0 265px;
+  border-radius: 10px;
+}
+.signupForm .users, .signupForm .password{
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 570px;
+  margin-top: 25px;
+}
+
+.password img{
+  position: absolute;
+  margin-left: -45px;
+  margin-top: 22px;
+  font-size: 45px;
+  font-weight: bold;
+  width: 100%;
+  max-width: 40px;
+}
+
+.signupForm input{
+  height: 35px;
+  margin: 20px 0;
+  font-size: 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 0 10px;
+  outline: none;
+
+}
+.signupForm input[type=submit]{
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: rgb(99, 104, 105);
+  border: 1px solid black;
+  color: white;
+  border-radius: 6px;
+  line-height: 20px;
+  transition-duration: 0.5s;
+
+}
+.signupForm input[type=submit]:hover{
+  background: #ccc;
+  color: black;
+  cursor: pointer;
+  border: 1px solid grey;
+}
+
+#titleSignup h1{
+  margin-left: 600px;
+  text-shadow: 1px 1px white;
+  font-size: 35px;
+}
+
+.haveAccount a{
+  color: rgba(2, 26, 105, 0.904);
+  font-size: 17px;
+}
+.haveAccount a:hover{
+  color: rgba(10, 12, 19, 0.904);
+  font-weight: 600;
+}
+.haveAccount h3, .haveAccount p{ 
+  font-size: 20px;
+}
