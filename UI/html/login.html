@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Mentors</title>
+  <script src="https://kit.fontawesome.com/22ded3b2d5.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../js/sidebar.js">
+</head>
+
+<body>
+  <!--My Logo-->
+  <header id="header-nav">
+    <ul>
+      <li><a>About</a></li>
+      <li><a>Contact</a></li>
+      <li><a>Login</a></li>
+      <li><input type="text" placeholder="Search" id="searchbtn"></li>
+    </ul>
+  </header>
+  <!-- navigation bar -->
+  <nav class="nav-menu">
+    <div id="btntoggle" onclick="displaySideBar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="logoo">
+      <img src="../assets/logo/ment.png" alt="FreeMentors">
+    </div>
+    <ul>
+      <li><a>Home</a></li>
+      <li><a>Mentors</a></li>
+      <li><a id="signUpBtn">SignUp</a></li>
+    </ul>
+  </nav>
+  <!-- sidebar when toggle button clicked -->
+  <div id="sidebar">
+    <ul>
+      <li id="close" onclick="closebtn()">&times;</li>
+      <li><a>Home</a></li>
+      <li><a>SignUp</a></li>
+      <li><a>Login</a></li>
+    </ul>
+  </div>
+  <!--At the Beginning with Login header and its content-->
+  <div id="titleLogin">
+    <h1>Login</h1>
+  </div>
+  <div class="container-login">
+    <center>
+      <form class="login-form" action="#">
+        <div class="users">
+          <img src="../assets/icons/userr.svg" alt="user">
+          <input type="email" placeholder="UserName" required>
+        </div>
+        <div class="passcode">
+          <img src="../assets/icons/lock.svg" alt="lock" id="pass">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <input type="submit" value="Login">
+      </form>
+
+      <div class="forgetCode">
+        <p><a href="#">Forget Password</a></p>
+        <h3>Don't have an account?<a href="#">Signup</a></h3>
+      </div>
+    </center>
+  </div>
+
+  <script src="../js/sidebar.js"></script>
+</body>
+
+</html>
