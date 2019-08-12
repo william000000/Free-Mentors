@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Mentors</title>
+  <script src="https://kit.fontawesome.com/22ded3b2d5.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="js/sidebar.js">
+</head>
+
+<body>
+  <!--My Header navigation bar-->
+  <header id="header-nav">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="html/login.html">Login</a></li>
+      <li><input type="text" placeholder="Search" id="searchbtn"></li>
+    </ul>
+  </header>
+  <!-- navigation bar -->
+  <nav class="nav-menu">
+    <div id="btntoggle" onclick="displaySideBar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="logoo">
+      <img src="assets/logo/ment.png" alt="FreeMentors">
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">MentorShip</a></li>
+      <li><a href="html/signup.html" id="signUpBtn">SignUp</a></li>
+      <li><a href="#" id="userInfos"><img src="assets/icons/user.svg" alt="user-infos"></a></li>
+    </ul>
+  </nav>
+  <!-- sidebar when toggle button clicked -->
+  <div id="sidebar">
+    <ul>
+      <li id="close" onclick="closebtn()">&times;</li>
+      <li><a href="#">Home</a></li>
+      <li><a href="html/signup.html">SignUp</a></li>
+      <li><a href="html/login.html">Login</a></li>
+    </ul>
+  </div>
+  <!--At the Beginning signup page----->
+  <div class="containerIndex">
+    <div class="homeImage">
+      <div class="imagess">
+        <img src="assets/images/earth.jpg" alt="mentors-inspire">
+      </div>
+      <div id="inspireWords">
+        <blockquote>"Every great achiever is inspired by a great mentor"</blockquote>
+      </div>
+      <div class="btnHome">
+        <button id="homeBtn">Get Free Mentorship</button>
+      </div>
+
+    </div>
+    <div class="mentors">
+      <ul>
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Willy Bob</figcaption>
+            <blockquote>In Software Engineering</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam1.jpg" alt="mentor-image">
+            <figcaption>- Bob Marley</figcaption>
+            <blockquote>In Healthy Situation</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Luther King</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Willy Bob</figcaption>
+            <blockquote>In Software Engineering</blockquote>
+
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam1.jpg" alt="mentor-image">
+            <figcaption>- Bob Marley</figcaption>
+            <blockquote>In Healthy Situation</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <div class="viewMore viewAll">
+          <a href="#" onclick="showMoreMentors()">See More Mentors</a>
+        </div>
+      </ul>
+
+      <ul class="moreMentor">
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+        <li>
+          <figure>
+            <img src="assets/images/fam2.jpg" alt="mentor-image">
+            <figcaption>- Jean Karamage</figcaption>
+            <blockquote>In Social Behavior</blockquote>
+          </figure>
+          <div>
+            <a href="#">View Mentor</a>
+            <img src="assets/icons/comment.svg" alt="comment">
+          </div>
+        </li>
+
+
+        <div class="viewMore" id="LessMentor">
+          <a href="#" onclick="lessMentors()">See Less Mentors</a>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Free Mentors &copy;
+    </p>
+  </footer>
+
+  <script src="js/sidebar.js"></script>
+</body>
+
+</html>

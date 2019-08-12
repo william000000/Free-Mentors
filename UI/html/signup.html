@@ -12,11 +12,11 @@
 </head>
 
 <body>
-  <!--My Logo-->
+  <!--My Header navigation bar-->
   <header id="header-nav">
     <ul>
-      <li><a>About</a></li>
-      <li><a>Contact</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
       <li><a href="login.html">Login</a></li>
       <li><input type="text" placeholder="Search" id="searchbtn"></li>
     </ul>
@@ -32,8 +32,8 @@
       <img src="../assets/logo/ment.png" alt="FreeMentors">
     </div>
     <ul>
-      <li><a>Home</a></li>
-      <li><a>Mentors</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#">Mentors</a></li>
       <li><a href="signup.html" id="signUpBtn">SignUp</a></li>
     </ul>
   </nav>
@@ -41,12 +41,12 @@
   <div id="sidebar">
     <ul>
       <li id="close" onclick="closebtn()">&times;</li>
-      <li><a>Home</a></li>
+      <li><a href="../index.html">Home</a></li>
       <li><a href="signup.html">SignUp</a></li>
       <li><a href="login.html">Login</a></li>
     </ul>
   </div>
-  <!--At the Beginning with Login header and its content-->
+  <!--At the Beginning signup page----->
   <div id="titleSignup">
     <h1>Registration</h1>
   </div>
@@ -70,6 +70,10 @@
           <input type="password" placeholder="Password" required>
         </div>
         <div class="users">
+            <img src="../assets/icons/doctor.svg" alt="Bio">
+            <input type="text" placeholder="Bio" required>
+        </div>
+        <div class="users">
           <img src="../assets/icons/job.svg" alt="job">
           <input type="text" placeholder="Occupation" required>
         </div>
@@ -82,7 +86,7 @@
 
       <div class="haveAccount">
         <h3>Already have an account?<a href="login.html">Login
-        </a></h3>
+          </a></h3>
       </div>
     </center>
   </div>
