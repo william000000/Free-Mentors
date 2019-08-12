@@ -1,8 +1,10 @@
 body{
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  background: rgb(146, 184, 169);
+  background: rgb(227, 236, 232);
 }
 #sidebar{
   position: fixed;
@@ -22,10 +24,13 @@ body{
 #sidebar ul li,#sidebar ul li a{
   color: white;
   padding: 15px 15px;
-  border-bottom: 1px solid whitesmoke;
   list-style: none;
+  text-decoration: none;
 }
-#sidebar ul li a:hover{
+#sidebar ul li{
+  border-bottom: 1px solid whitesmoke;
+}
+#sidebar ul li:hover{
   background: rgb(112, 111, 111);
 }
 #close{
@@ -43,12 +48,13 @@ nav{
   position: sticky;
   left: 0;
   top: 0;
-  padding: 5px 10px;
+  padding: 5px 0;
   width: 100%;
   height: 50px;
   border-top: 1px solid rgb(255, 255, 255);
   box-shadow: 0 0 3px 0 rgb(126, 125, 125);
   background: white;
+  z-index: 1;
 }
 
 nav ul{
@@ -74,17 +80,16 @@ nav ul li a{
   
 }
 nav ul li a:hover{
-  color: black;
-  background: #ccc;
-  width: 60%;
-  height: 16px;
-  border: 1px solid black;
-  border-radius: 5px;
+  border-top: 3px solid gray;
 }
-
+nav ul li:nth-child(3) a:hover{
+  background: rgb(196, 192, 192);
+ 
+}
 #btntoggle{
   width: 3%;
   padding-top: 10px;
+  padding-left: 8px;
 }
 
 #btntoggle span{
@@ -124,10 +129,11 @@ nav ul li a:hover{
 
 }
 header #searchbtn{
-  width:20%;
+  width:90%;
   border-radius: 7px;
   margin-top: 15px;
-  position: absolute;
+  position: relative;
+  padding: 2px 10px;
   
 }
 header ul{
@@ -148,6 +154,10 @@ header ul li a{
   margin: 20px 0;
   color: white;
 }
+header ul li a:hover{
+  color: rgb(161, 178, 197);
+  cursor: pointer;
+}
 #signUpBtn{
   border: 1px solid black;
   border-radius: 5px;
@@ -162,7 +172,7 @@ header ul li a{
   max-width: 830px;
   height: 100%;
   max-height: 300px;
-  margin: 0 265px;
+  margin: 0 auto;
   border-radius: 10px;
   z-index: -1;
 }
@@ -224,7 +234,7 @@ header ul li a{
 }
 
 #titleLogin h1{
-  margin-left: 600px;
+  margin-left: 580px;
   text-shadow: 1px 1px white;
   font-size: 35px;
 }
@@ -240,33 +250,230 @@ header ul li a{
   font-size: 20px;
 }
 
-/*Responsiveness of my app------------------*/
+/*All about Responsiveness of my app------------------*/
 
-@media(max-width: 690px){
+/*Tablet*/
+@media(max-width: 768px){
+  .nav-menu{
+    position: fixed;
+  }
   .nav-menu ul{
     display: none;
   }
   #header-nav{
     display: none;
   }
+  /*Login Responsivnes*/
   #titleLogin h1{
-    margin-left: 130px;
+    margin-left: 240px;
     font-size: 30px;
   }
   .container-login{
     display: flex;
     width: 100%;
+    max-width: 550px;
+    margin: 10px auto;
+  }
+  .login-form .users, .login-form .passcode{
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    margin-left: 130px;
+  } 
+  .login-form input[type='submit']{
+    margin-left: 180px;
+  }
+  #titleLogin h1{
+    margin: 70px 320px;
+    font-size: 40px;
+  }
+  /*SignUp Responsive*/
+  .containerSignup {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+  }  
+  #titleSignup{
+    margin: 70px -450px;
+    font-size: 40px;
+    
+  }
+
+  /*View All Mentor in Index page---*/ 
+  .containerIndex .mentors ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .containerIndex .mentors ul li{
+    flex-basis: 100%;
+    max-width: 500px;
+    margin: 10px 80px;
+    padding: 15px 0;
+    
+  }
+  .containerIndex .mentors ul .viewMore{
+    margin: 0 30%;
+  }
+  .containerIndex .homeImage .imagess img{
+    position: relative;
+    width: 100%;
+
+  }
+  .containerIndex #inspireWords{
+    width: 100%; 
+    margin: -70px -400px;
+  }
+  .homeImage #homeBtn{
+    margin: -70px -320px;
+  }
+ 
+}
+/*Large Screen--------------------------*/
+@media(min-width: 2560px){
+
+  #titleLogin h1{
+    margin-left:1200px;
+    font-size: 40px;
+  }
+  #titleSignup{
+    margin-left:400px;
+    font-size: 40px;
+  }
+  .container-login{
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 800px;
+  }
+  .login-form .users, .login-form .passcode{
+    display: flex;
+    width: 100%;
+    max-width: 500px;  
+  } 
+   /*View All Mentor in Index page---*/ 
+  .containerIndex .mentors ul{
+    display: flex;
+  }
+  .containerIndex .mentors ul li{
+    width: 100%;
+    margin: 50px 20px;
+  }
+  .containerIndex .mentors ul li figure img{
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+  }
+
+  .containerIndex #inspireWords{
+    width: 100%; 
+    margin-left: 550px;
+  }
+  .homeImage #homeBtn{
+    position: absolute;
+   
+    margin-left: 600px;
+  }
+
+}
+/*Mobiles----------------------------*/
+@media(max-width: 414px){
+  .nav-menu{
+    position: fixed;
+  }
+  .nav-menu ul{
+    display: none;
+  }
+  #header-nav{
+    display: none;
+  }
+  /*login responsivenss*/
+  #titleLogin h1{
+    margin-left: 130px;
+    font-size: 30px;
+  }
+
+  .container-login{
+    display: flex;
+    width: 100%;
     max-width: 310px;
-    margin: 10px 15px;
+    margin: 10px auto;
+
   }
   .login-form .users, .login-form .passcode{
     width: 100%;
     max-width: 200px;
-    margin-left: 20px;
+    margin-left: 40px;  
   } 
-  
+  .login-form .users img, .login-form .users input, .login-form .passcode img, .login-form .passcode input{
+    margin-left: -40px;
+
+  }
+  .login-form .users input, .login-form .passcode input{
+    width: 100%;
+    max-width: 90%;
+    margin-left: 10px; 
+    
+  }
+  .login-form input[type='submit']{
+    margin-left: 30px;
+  }
+  /*Signup responsivenes*/
+  #titleSignup{
+    margin-left: -500px;
+    font-size: 30px;
+  }
+
+  .containerSignup{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    max-width: 310px;
+    margin: 10px 30px;
+
+  }
+  .signupForm{
+    margin: 10px 10px;
+  }
+  .signupForm .users, .signupForm .password{
+    width: 100%;
+    max-width: 200px;
+    margin-left: 40px;  
+
+  } 
+  .signupForm .users img, .signupForm .users input, .signupForm .password img, .signupForm .password input{
+    margin-left: -10px;
+
+  }
+  .signupForm .users input, .signupForm .password input{
+    width: 100%;
+    max-width: 60%;
+    margin-left: -50px; 
+    
+  }
+  .signupForm input[type='submit']{
+    margin-left: 30px;
+  }
+  /*View All Mentor in Index page---*/ 
+  .containerIndex .homeImage .imagess img{
+    position: relative;
+    width: 100%;
+  }
+  .containerIndex #inspireWords{
+    width: 100%; 
+    margin: -70px -410px;
+  }
+  .homeImage #homeBtn{
+    margin: -110px -480px;
+  }
+  .containerIndex .mentors ul li{
+    margin: 10px 0 10px -15px; 
+  }
+
 }
-/*End Responsive part-------*/
+
+/*End Responsive part--------------------------*/
 
 /*Container Signup-------------------------*/
 .containerSignup{
@@ -277,7 +484,7 @@ header ul li a{
   max-width: 830px;
   height: 100%;
   max-height: 800px;
-  margin: 0 265px;
+  margin: 0 auto;
   border-radius: 10px;
 }
 .signupForm .users, .signupForm .password{
@@ -330,7 +537,7 @@ header ul li a{
 }
 
 #titleSignup h1{
-  margin-left: 600px;
+  margin-left: 580px;
   text-shadow: 1px 1px white;
   font-size: 35px;
 }
@@ -345,4 +552,126 @@ header ul li a{
 }
 .haveAccount h3, .haveAccount p{ 
   font-size: 20px;
+}
+/*Home page---------------------------*/
+
+.containerIndex{
+  display: block;
+  width: 100%;
+  
+}
+.containerIndex .homeImage .imagess img{
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 440px;
+  margin: 1px 0;
+  opacity: 1;
+  z-index: -1;
+}
+.homeImage #homeBtn{
+  position: absolute;
+  color: black;
+  font-size: 22px;
+  font-weight: 200;
+  background: transparent;
+  border: 3px solid rgb(12, 14, 27);
+  top: 380px;
+  left: 550px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 3px 8px; 
+  outline: none;
+}
+
+.homeImage #homeBtn:hover{
+  background:rgb(217, 217, 247);
+  transition-delay: 70ms;
+}
+.homeImage #inspireWords{
+  position: absolute;
+  color: white;
+  font-size: 1.5em; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  top: 150px;
+  left: 400px;
+  
+}
+
+.mentors ul{
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+.mentors ul li{ 
+  background: white;
+  width: 100%;
+  max-width: 30%;
+  height: 300px;
+  list-style: none;
+  margin: 10px 20px 10px 0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px grey;
+  text-align: center;
+  
+}
+.mentors ul li img{
+  position: relative;
+  width: 100%;
+  max-width: 70%;
+  
+}
+ul li figure figcaption{
+  color: rgb(67, 121, 121);
+}
+.mentors ul li div img{
+  position: absolute;
+  width: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.mentors ul li div a{
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 4px 8px;
+  border-radius: 3px;
+  color: black;
+  font-size: .9em;
+}
+.mentors ul li div a:hover{
+  background: #ccc;
+}
+.mentors ul .viewMore a{
+  text-decoration: none;
+  border: 2px solid black;
+  padding: 4px 8px;
+  border-radius: 3px;
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 10px 10px;
+  float: right;
+}
+
+.nav-menu ul #userInfos{
+  margin-top: -40px;
+}
+.nav-menu ul #userInfos:hover{
+  background: transparent;
+  
+}
+
+.mentors .moreMentor{
+  display: none;
+}
+
+/*Footer-----------------*/
+footer p{
+  color: white;
+  text-align: center;
+  background: rgb(14, 17, 34);
+  height: 2em;
+  padding: 20px 0;
+  margin-top: 10px;
 }
