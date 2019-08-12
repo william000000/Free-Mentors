@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Mentors</title>
+  <script src="https://kit.fontawesome.com/22ded3b2d5.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../js/sidebar.js">
+</head>
+
+<body>
+  <!--My Header navigation bar-->
+  <header id="header-nav">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="../html/login.html">Login</a></li>
+      <li><input type="text" placeholder="Search" id="searchbtn"></li>
+    </ul>
+  </header>
+  <!-- navigation bar -->
+  <nav class="nav-menu">
+    <div id="btntoggle" onclick="displaySideBar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="logoo">
+      <img src="../assets/logo/ment.png" alt="FreeMentors">
+    </div>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#">MentorShip</a></li>
+      <li><a href="../html/signup.html" id="signUpBtn">SignUp</a></li>
+      <li><a href="#" id="userInfos"><img src="../assets/icons/user.svg" alt="user-infos"></a></li>
+    </ul>
+  </nav>
+  <!-- sidebar when toggle button clicked -->
+  <div id="sidebar">
+    <ul>
+      <li id="close" onclick="closebtn()">&times;</li>
+      <li><a href="#">Home</a></li>
+      <li><a href="../html/signup.html">SignUp</a></li>
+      <li><a href="../html/login.html">Login</a></li>
+    </ul>
+  </div>
+  <!--At the Beginning view specific mentor page----->
+  <div class="container-view-mentor">
+    <div class="viewMentor">
+      <div class="mentorPhoto">
+        <img src="../assets/images/fam1.jpg" alt="mentor-image">
+        <div class="mentorInfo">
+          <ul>
+            <li>
+              <label for="email">Email :</label>
+              <output>marley@mentor.com</output>
+            </li>
+            <li>
+              <label for="address">Address :</label>
+              <output>Jamaica</output>
+            </li>
+            <li>
+              <label for="bio">Bio :</label>
+              <output>Something</output>
+            </li>
+            <li>
+              <label for="occupation">Occupation :</label>
+              <output>Singer :</output>
+            </li>
+            <li>
+              <label for="expertise">Expertise :</label>
+              <output>Reggae</output>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+      <div class="testimonial">
+        <h1>Bob Marley</h1>
+        <p>
+          Among biblical quotations favoured by Rastafarians comes psalm 118: “The stone that the builders refused is
+          become the headstone of the corner”, a teaching put to song by Bob Marley on 1970’s Corner Stone, and one
+          that neatly frames a life that began in poverty and ended in global superstardom, a rags to riches tale
+          unparalleled in pop. Some 36 years after his death, Marley remains a planetary icon, his image as likely to
+          turn up at a Native American protest as on a Camden Town T-shirt. For millions, he represents an
+          irresistible mix of righteous rebellion, physical and spiritual joy (livity in Rasta speak) and, of course,
+          musical genius.
+        </p>
+
+      </div>
+    </div>
+    <div class="requestBtn">
+      <button>Request Mentorship Session</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>
+      Free Mentors &copy;
+    </p>
+  </footer>
+
+  <script src="../js/sidebar.js"></script>
+</body>
+
+</html>
