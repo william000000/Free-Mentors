@@ -996,3 +996,63 @@ footer{
 .containerAdminChangeUser table tr:nth-child(even){
   background: rgba(236, 236, 236, 0.733);
 }
+
+/*review a mentor after mentorship session*/
+.reviewMentorship{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 80px;
+  left: 250px;
+  display: none;
+  
+}
+.reviewMentorship form{
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 30px;
+  margin: 10px 200px;
+  border-radius: 5px;
+  background: #ccc;
+}
+.reviewMentorship form .reviewScore input[type=radio]{
+  display: inline-flex;
+  margin: 10px 5px 10px 5px;
+  font-size: 20px;
+}
+.reviewMentorship form .remark textarea{
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-size: 16px;
+  outline: none;
+}
+
+.reviewMentorship form input[type='submit'], .reviewMentorship form input[type='button']{
+  width: 100%;
+  max-width: 300px;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  box-shadow: 2px 1px black;
+  background: rgb(62, 76, 87);
+  border-radius: 7px;
+  margin: 10px auto;
+  outline: none;
+}
+.reviewMentorship form input[type=submit]:hover, .reviewMentorship form input[type='button']:hover{
+  background: transparent;
+  color: black;
+  outline: none;
+  transition-delay: 50ms;
+  cursor: pointer;
+}
+
+.reviewMentorship h1{
+  text-align: center;
+  text-shadow: 1px 1px white;
+  font-size: 35px;
+
+}
