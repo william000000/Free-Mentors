@@ -12,3 +12,9 @@ function successRequest(){
   })
   
 }
+
+function mentorAgree(){
+  const result = confirm('Do you want to confirm?');
+  if(result)
+  alert(" Succefully Done!");
+}
