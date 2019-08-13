@@ -18,3 +18,9 @@ function lessMentors(){
   document.querySelector('.moreMentor').style.display = "none";
   document.querySelector('.viewMore').style.display = "block";
 }
+
+
+function displayReview(){
+  document.querySelector('.reviewMentorship').style.display = 'flex';
+  document.querySelector('.mentors').style.opacity = '0.2';
+}

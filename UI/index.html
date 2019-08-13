@@ -71,7 +71,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -83,7 +83,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -95,7 +95,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -108,7 +108,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -120,7 +120,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -132,7 +132,7 @@
           </figure>
           <div>
             <a href="././html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -150,7 +150,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -162,7 +162,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -174,7 +174,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -186,7 +186,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -198,7 +198,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -210,7 +210,7 @@
           </figure>
           <div>
             <a href="./html/viewMentor.html">View Mentor</a>
-            <img src="assets/icons/comment.svg" alt="comment">
+            <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
 
@@ -220,6 +220,32 @@
         </div>
 
       </ul>
+    </div>
+  </div>
+
+  <div class="reviewMentorship">
+    <div>
+        <h1>Review this Mentor</h1>
+        <form action="#">
+          <div class="reviewScore">
+            <label for="mentorName">Score</label>
+            <input type="radio" name="score" id="score" >1
+            <input type="radio" name="score" id="score">2
+            <input type="radio" name="score" id="score">3
+            <input type="radio" name="score" id="score">4
+            <input type="radio" name="score" id="score">5
+          </div>
+    
+          <div class="remark">
+            <label for="mentorQuestion">Question</label><br>
+            <textarea name="question" id="mentorQuestion" cols="30" rows="10" placeholder="Remark Your Mentor"
+              required></textarea>
+          </div>
+    
+          <input type="submit" value="Review" onclick="successRequest()">
+
+          <input type="button" value="Cancel" onclick="window.location.href='index.html'">
+        </form>
     </div>
   </div>
 
