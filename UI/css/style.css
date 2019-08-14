@@ -539,6 +539,14 @@ header ul li a:hover{
     margin: 80px auto;
     font-size: 30px;
   }
+  /*review mentor after mentorship session*/
+  .reviewMentorship {
+  position: relative;
+  width: 100%;
+  height: auto;
+  top: 0;
+  margin-left: 45px;
+}
 
 }
 
@@ -732,6 +740,7 @@ ul li figure figcaption{
 }
 
 .mentors .moreMentor{
+  transition-delay: 50ms;
   display: none;
 }
 
@@ -1001,18 +1010,17 @@ footer{
 .reviewMentorship{
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: auto;
   top: 80px;
-  left: 250px;
+  left: -50px;
   display: none;
   
 }
 .reviewMentorship form{
   display: flex;
   flex-direction: column;
-  background: white;
   padding: 30px;
-  margin: 10px 200px;
+  margin: 80px auto;
   border-radius: 5px;
   background: #ccc;
 }
@@ -1051,8 +1059,70 @@ footer{
 }
 
 .reviewMentorship h1{
+  position: absolute;
+  text-shadow: 1px 1px white;
+  font-size: 35px;
+  margin-left: 510px;
+
+  
+}
+
+/*User Board to view all session request*/
+.containerUserBoard h1{
   text-align: center;
   text-shadow: 1px 1px white;
   font-size: 35px;
+}
 
+.containerUserBoard table{
+  display: flex;
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  
+}
+.containerUserBoard table tr td{
+  border-bottom: 2px solid black;
+  margin: 10px 50px;
+  padding: auto;
+ 
+  
+}
+.containerUserBoard table tr td label{
+  font-weight: bold;
+}
+.containerUserBoard table tr td input {
+  width: 100%;
+  height: 30px;
+  color: black;
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid rgb(139, 139, 139);
+  background: rgb(195, 202, 207);
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 5px;
+  outline: none;
+}
+.containerUserBoard table tr td select{
+  width: 100%;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 15px;
+  outline: none;
+}
+.containerUserBoard table tr td input:hover{
+  background: transparent;
+  color: black;
+  outline: none;
+  transition-delay: 50ms;
+  cursor: pointer;
+}
+.containerUserBoard table tr:nth-child(even){
+  background: rgba(236, 236, 236, 0.733);
 }

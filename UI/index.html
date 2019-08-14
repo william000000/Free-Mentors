@@ -33,9 +33,9 @@
     </div>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">MentorShip</a></li>
+      <li><a href="html/mentorshipReq.html">MentorShip</a></li>
       <li><a href="html/signup.html" id="signUpBtn">SignUp</a></li>
-      <li><a href="#" id="userInfos"><img src="assets/icons/user.svg" alt="user-infos"></a></li>
+      <li><a href="#" id="userInfos"><img src="assets/icons/user.svg" alt="user-infos" onclick="window.location.href='html/viewAllMentorshipSession.html'"></a></li>
     </ul>
   </nav>
   <!-- sidebar when toggle button clicked -->
@@ -224,20 +224,20 @@
   </div>
 
   <div class="reviewMentorship">
-    <div>
+    
         <h1>Review this Mentor</h1>
         <form action="#">
           <div class="reviewScore">
-            <label for="mentorName">Score</label>
+            <label for="mentorName"><b>Score</b></label>
             <input type="radio" name="score" id="score" >1
             <input type="radio" name="score" id="score">2
             <input type="radio" name="score" id="score">3
             <input type="radio" name="score" id="score">4
             <input type="radio" name="score" id="score">5
           </div>
-    
+          <br>
           <div class="remark">
-            <label for="mentorQuestion">Question</label><br>
+            <label for="mentorQuestion"><b>Remark</b></label><br>
             <textarea name="question" id="mentorQuestion" cols="30" rows="10" placeholder="Remark Your Mentor"
               required></textarea>
           </div>
@@ -246,7 +246,7 @@
 
           <input type="button" value="Cancel" onclick="window.location.href='index.html'">
         </form>
-    </div>
+    
   </div>
 
   <footer>

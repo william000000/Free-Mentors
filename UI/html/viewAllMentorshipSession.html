@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Free Mentors</title>
+  <script src="https://kit.fontawesome.com/22ded3b2d5.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../js/sidebar.js">
+</head>
+
+<body>
+  <!--My Header navigation bar-->
+  <header id="header-nav">
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="../html/login.html">Login</a></li>
+      <li><input type="text" placeholder="Search" id="searchbtn"></li>
+    </ul>
+  </header>
+  <!-- navigation bar -->
+  <nav class="nav-menu">
+    <div id="btntoggle" onclick="displaySideBar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="logoo">
+      <img src="../assets/logo/ment.png" alt="FreeMentors">
+    </div>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="mentorshipReq.html">MentorShip</a></li>
+      <li><a href="../html/signup.html" id="signUpBtn">SignUp</a></li>
+      <li><a href="#" id="userInfos"><img src="../assets/icons/user.svg" alt="user-infos" onclick="window.location.href='html/viewAllMentorshipSession.html'"></a></li>
+    </ul>
+  </nav>
+  <!-- sidebar when toggle button clicked -->
+  <div id="sidebar">
+    <ul>
+      <li id="close" onclick="closebtn()">&times;</li>
+      <li><a href="#">Home</a></li>
+      <li><a href="../html/signup.html">SignUp</a></li>
+      <li><a href="../html/login.html">Login</a></li>
+    </ul>
+  </div>
+  <!--At the Beginning Mentors Board----->
+  <div class="containerUserBoard">
+    <h1>Mentor Board</h1>
+    <table class="myRequests">
+      <th>Date</th>
+      <th>Mentor Name</th>
+      <th>Mentor Email</th>
+      <th>Question</th>
+
+      <tr>
+        <td>
+          <label for="">12/03/2019</label>
+        </td>
+        <td>
+          <output>Harvard</output>
+        </td>
+        <td>
+            <output>havard@gmail.com</output>
+          </td>
+        <td>
+          <output>How can I be a best programmer?How can I be a best programmer?How can I be a best programmer?How can I
+            be a best programmer?How can I be a best programmer?</output>
+        </td>
+
+      </tr>
+      <tr>
+          <td>
+            <label for="">12/03/2019</label>
+          </td>
+          <td>
+            <output>Harvard</output>
+          </td>
+          <td>
+              <output>havard@gmail.com</output>
+            </td>
+          <td>
+            <output>How can I be a best programmer?How can I be a best programmer?How can I be a best programmer?How can I
+              be a best programmer?How can I be a best programmer?</output>
+          </td>
+  
+        </tr>
+        <tr>
+            <td>
+              <label for="">12/03/2019</label>
+            </td>
+            <td>
+              <output>Harvard</output>
+            </td>
+            <td>
+                <output>havard@gmail.com</output>
+              </td>
+            <td>
+              <output>How can I be a best programmer?How can I be a best programmer?How can I be a best programmer?How can I
+                be a best programmer?How can I be a best programmer?</output>
+            </td>
+    
+          </tr>
+          <tr>
+              <td>
+                <label for="">12/03/2019</label>
+              </td>
+              <td>
+                <output>Harvard</output>
+              </td>
+              <td>
+                  <output>havard@gmail.com</output>
+                </td>
+              <td>
+                <output>How can I be a best programmer?How can I be a best programmer?How can I be a best programmer?How can I
+                  be a best programmer?How can I be a best programmer?</output>
+              </td>
+      
+            </tr>
+            <tr>
+                <td>
+                  <label for="">12/03/2019</label>
+                </td>
+                <td>
+                  <output>Harvard</output>
+                </td>
+                <td>
+                    <output>havard@gmail.com</output>
+                  </td>
+                <td>
+                  <output>How can I be a best programmer?How can I be a best programmer?How can I be a best programmer?How can I
+                    be a best programmer?How can I be a best programmer?</output>
+                </td>
+
+        
+              </tr>
+
+     
+    </table>
+  </div>
+
+  <footer id="footer">
+    <p>
+      Free Mentors &copy;
+    </p>
+  </footer>
+
+  <script src="../js/sidebar.js"></script>
+  <script src="../js/success.js"></script>
+</body>
+
+</html>
