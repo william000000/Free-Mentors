@@ -506,20 +506,24 @@ header ul li a:hover{
     margin-top: 80px;
   }
   /*Mentors board for accept or reject req*/
-  .containerMentorBoard table tr, .containerMentorBoard table th{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: auto;
-    margin: auto;
-    border: 1px solid black;
+  .containerMentorBoard table{
+    overflow-x: auto;
   }
 
   .containerMentorBoard h1{
     margin: 80px auto;
     font-size: 30px;
   }
-
+  
+    /*User board to view all mentorship session*/
+    .containerUserBoard table {
+      overflow-x: auto;
+    }
+  
+    .containerUserBoard h1{
+      margin: 80px auto;
+      font-size: 30px;
+    }
   /*Admin change a user to a mentor*/
   .containerAdminChangeUser table{
     position: relative;
@@ -539,8 +543,28 @@ header ul li a:hover{
     margin: 80px auto;
     font-size: 30px;
   }
-  /*review mentor after mentorship session*/
-  .reviewMentorship {
+
+    /*Admin change a user to a mentor*/
+  .containerAdminChangeUser table{
+    position: relative;
+    width: 100%;
+    
+  }
+  .containerAdminChangeUser table tr, .containerAdminChangeUser table th{
+    display:flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: auto;
+    margin: auto;
+    border: 1px solid black;
+  }
+
+  .containerAdminChangeUser h1{
+    margin: 80px auto;
+    font-size: 30px;
+  }
+/*review mentor after mentorship session*/
+.reviewMentorship {
   position: relative;
   width: 100%;
   height: auto;
@@ -1078,20 +1102,27 @@ footer{
   display: flex;
   width: 100%;
   height: auto;
-  max-width: 1000px;
+  max-width: 700px;
   margin: auto;
   background: white;
   padding: 10px;
   border-radius: 5px;
   
 }
+.containerUserBoard table tbody{
+  width: 100%;
+}
+.containerUserBoard table tr{
+  width: 100%;
+}
 .containerUserBoard table tr td{
   border-bottom: 2px solid black;
-  margin: 10px 50px;
-  padding: auto;
+  margin: 10px auto;
+  padding: 20px;
  
   
 }
+
 .containerUserBoard table tr td label{
   font-weight: bold;
 }
@@ -1107,21 +1138,6 @@ footer{
   margin: 0 auto;
   padding: 5px;
   outline: none;
-}
-.containerUserBoard table tr td select{
-  width: 100%;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 5px;
-  font-size: 15px;
-  outline: none;
-}
-.containerUserBoard table tr td input:hover{
-  background: transparent;
-  color: black;
-  outline: none;
-  transition-delay: 50ms;
-  cursor: pointer;
 }
 .containerUserBoard table tr:nth-child(even){
   background: rgba(236, 236, 236, 0.733);
