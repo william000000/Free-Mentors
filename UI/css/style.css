@@ -1,11 +1,12 @@
 body{
+  position: sticky;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background: rgb(227, 236, 232);
-  position: relative;
+ 
 }
 #sidebar{
   position: fixed;
@@ -697,7 +698,7 @@ header ul li a:hover{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   top: 150px;
   left: 400px;
-  
+ 
 }
 
 .mentors ul{
@@ -717,11 +718,23 @@ header ul li a:hover{
   text-align: center;
   
 }
+.mentors ul li:hover{
+  box-shadow: 3px 3px 3px 3px rgb(158, 158, 158);
+}
 .mentors ul li img{
-  position: relative;
-  width: 100%;
-  max-width: 70%;
-  
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 4px;
+}
+.mentors h2{
+  background: rgba(255, 255, 255, 0.74);
+  border-bottom: 3px solid rgb(1, 2, 31);
+  border-top: 1px solid rgb(1, 2, 31);
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 3px white;
 }
 ul li figure figcaption{
   color: rgb(67, 121, 121);
@@ -866,6 +879,8 @@ footer{
   padding: 30px;
   margin: 10px 200px;
   border-radius: 5px;
+  box-shadow: 3px 3px rgb(158, 158, 158);
+
 }
 .container-mentorship form .mentorNames select,.container-mentorship form .questions textarea{
   width: 100%;
@@ -911,16 +926,16 @@ footer{
   text-shadow: 1px 1px white;
   font-size: 35px;
 }
-
 .containerMentorBoard table{
   display: flex;
   width: 100%;
   height: auto;
-  max-width: 1000px;
+  max-width: 700px;
   margin: auto;
   background: white;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 2px 2px rgb(158, 158, 158);
   
 }
 .containerMentorBoard table tr td, .containerMentorBoard table th{
@@ -982,6 +997,7 @@ footer{
   background: white;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 2px 2px rgb(158, 158, 158);
   
 }
 .containerAdminChangeUser table tr td, .containerAdminChangeUser table th{
@@ -1047,6 +1063,7 @@ footer{
   margin: 80px auto;
   border-radius: 5px;
   background: #ccc;
+  box-shadow: 2px 2px rgb(158, 158, 158);
 }
 .reviewMentorship form .reviewScore input[type=radio]{
   display: inline-flex;
@@ -1107,6 +1124,7 @@ footer{
   background: white;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 2px 2px rgb(158, 158, 158);
   
 }
 .containerUserBoard table tbody{
@@ -1114,6 +1132,10 @@ footer{
 }
 .containerUserBoard table tr{
   width: 100%;
+}
+.containerUserBoard table tr:nth-child(even):hover, .containerUserBoard table tr:nth-child(odd):hover{
+  background: #ccc;
+  cursor: pointer;
 }
 .containerUserBoard table tr td{
   border-bottom: 2px solid black;
