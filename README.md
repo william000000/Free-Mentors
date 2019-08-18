@@ -48,8 +48,8 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 
 | Request Url | Methods  | Description  |
 | ------- | --- | --- |
-| /api/v2/auth/signup | POST | Create user account |
-| /api/v2/auth/signin | POST | User Login  |
+| /api/v1/auth/signup | POST | Create user account |
+| /api/v1/auth/signin | POST | User Login  |
 
 
 
@@ -86,4 +86,4 @@ Heroku
 ---
 
 ## Copyright
-Copyright (c) Willy Sugira, Software developer
+Copyright (c) Willy SUGIRA, Software developer
