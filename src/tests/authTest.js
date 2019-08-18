@@ -195,7 +195,59 @@ describe("Authentication tests", () => {
     });
   });
 
-});
+  it("User should be able to login when valid data", (done) => {
+    chai.request(app).post("/api/v1/auth/signin").send({
+      email: 'willy@gmail.com',
+      password: 'rwanda',
+    }).end((err, res) => {
+      res.should.have.status(200);
+      done();
+    });
+  });
 
+    it("User should not be able to login when invalid email", (done) => {
+      chai.request(app).post("/api/v1/auth/signin").send({
+        email: 'willy',
+        password: 'rwanda',
+      }).end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an("object");
+        done();
+      });
+    });
+
+    it("User should not be able to login when email not exist", (done) => {
+      chai.request(app).post("/api/v1/auth/signin").send({
+        email: 'willyfegfgbjfj@gmail.com',
+        password: 'rwanda',
+      }).end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.an("object");
+        done();
+      });
+    });
+
+    it("User should not be able to login when invalid password", (done) => {
+      chai.request(app).post("/api/v1/auth/signin").send({
+        email: 'willy@gmail.com',
+        password: 'rwandaaa',
+      }).end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.an("object");
+        done();
+      });
+    });
+    it("User should not be able to login when no password", (done) => {
+      chai.request(app).post("/api/v1/auth/signin").send({
+        email: 'willy@gmail.com',
+        password: '',
+      }).end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+    });
+
+
+});
 
 

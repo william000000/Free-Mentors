@@ -60,5 +60,39 @@ class UserController {
       }
     });
   }
+
+  /**
+  * Sign up a user
+  * @param {object} req
+  * @param {object} res
+  */
+  static signin(req, res) {
+    const isUserExist = users.find(user => user.email === req.body.email);
+    if (!isUserExist) {
+      return res.status(401).json({
+        status: 401,
+        message: "Email not exists"
+      });
+    }
+   
+    const password = bcrypt.compareSync(req.body.password, isUserExist.password);
+    if (!password) {
+      return res.status(401).json({
+        status: 401,
+        message: "Password not exists"
+      });
+    }
+    const token = jwt.sign({
+      email: req.body.email,
+      password: req.body.password
+    }, process.env.secretKey, { expiresIn: '28d' });
+
+    res.status(200).json({
+      status: 200,
+      message: "User is succefully logged in",
+      data: { token }
+    });
+
+  }
 }
 export default UserController;
