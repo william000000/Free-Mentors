@@ -33,6 +33,24 @@ class UserValidations {
       });
     }
   }
+
+  static validateSignin(req, res, next) {
+    try {
+
+      req.body.email = req.body.email.trim();
+      req.body.password = req.body.password.trim();
+
+      if (!email.test(req.body.email)) throw new Error('please, insert and make sure it\'s valid email');
+      if (!((req.body.password).length > 5)) throw new Error('please, insert and make sure it\'s valid password');
+
+      next();
+    } catch (err) {
+      res.status(400).json({
+        status: 400,
+        error: err.message
+      });
+    }
+  }
 }
 
 export default UserValidations;
