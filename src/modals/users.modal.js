@@ -1,5 +1,6 @@
 const users = [
   {
+    userId: 1,
     firstName: 'willy',
     lastName: 'tony',
     email: 'willy@gmail.com',
@@ -8,8 +9,10 @@ const users = [
     bio: 'Am doctor of Teeth',
     occupation: 'Nurse',
     expertise: 'Nurse',
+    isAdmin: false
   },
   {
+    userId: 2,
     firstName: 'bob',
     lastName: 'marley',
     email: 'bob@gmail.com',
@@ -18,6 +21,7 @@ const users = [
     bio: 'Am singer in Reggae style',
     occupation: 'Singer',
     expertise: 'Singer',
+    isAdmin: true
   }
 ];
 export default users;
