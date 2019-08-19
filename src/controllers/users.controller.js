@@ -1,4 +1,4 @@
-import users from '../modals/modal.users';
+import users from '../models/users.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
@@ -30,7 +30,8 @@ class UserController {
       address: req.body.address,
       bio: req.body.bio,
       occupation: req.body.occupation,
-      expertise: req.body.expertise
+      expertise: req.body.expertise,
+      isAdmin: false
     };
     users.push(newUser);
     const token = jwt.sign({
@@ -40,7 +41,8 @@ class UserController {
       lastName: newUser.lastName,
       bio: newUser.bio,
       occupation: newUser.occupation,
-      expertise: newUser.expertise
+      expertise: newUser.expertise,
+      isAdmin: false
 
     }, process.env.secretKey, { expiresIn: '28d' });
     res.status(201).json({
@@ -55,14 +57,15 @@ class UserController {
         address: newUser.address,
         bio: newUser.bio,
         occupation: newUser.occupation,
-        expertise: newUser.expertise
+        expertise: newUser.expertise,
+        isAdmin: false
 
       }
     });
   }
 
   /**
-  * Sign up a user
+  * Sign in a user
   * @param {object} req
   * @param {object} res
   */
@@ -74,7 +77,7 @@ class UserController {
         message: "Email not exists"
       });
     }
-   
+    
     const password = bcrypt.compareSync(req.body.password, isUserExist.password);
     if (!password) {
       return res.status(401).json({
@@ -83,8 +86,9 @@ class UserController {
       });
     }
     const token = jwt.sign({
-      email: req.body.email,
-      password: req.body.password
+      userId: isUserExist.userId,
+      email: isUserExist.email,
+      isAdmin: isUserExist.isAdmin
     }, process.env.secretKey, { expiresIn: '28d' });
 
     res.status(200).json({
@@ -92,7 +96,6 @@ class UserController {
       message: "User is succefully logged in",
       data: { token }
     });
-
   }
 }
 export default UserController;
