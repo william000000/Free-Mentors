@@ -77,7 +77,7 @@ class UserController {
         message: "Email not exists"
       });
     }
-    
+
     const password = bcrypt.compareSync(req.body.password, isUserExist.password);
     if (!password) {
       return res.status(401).json({
