@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const IsAdmin = (req, res, next) => {
+const verifyUser = (req, res, next) => {
   jwt.verify(req.headers['auth'], process.env.secretKey, (err, result) => {
     if (err) {
       res.status(401).json({
@@ -11,14 +11,9 @@ const IsAdmin = (req, res, next) => {
         error: 'Invalid token'
       });
     } else {
-      if (result.isAdmin === false) {
-        return res.status(403).json({
-          status: 403,
-          error: 'Forbidden'
-        });
-      }
+      req.user = result;
       next();
     }
   });
 };
-export default IsAdmin;
+export default verifyUser;
