@@ -4,6 +4,11 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 class AdminController {
+  /**
+  * Admin Change User to Mentor
+  * @param {object} req
+  * @param {object} res
+  */
   static changeUserToMentor(req, res) {
 
     const findUser = users.find(m => m.userId == parseInt(req.params.userId));
@@ -18,7 +23,7 @@ class AdminController {
     if (findUser.isAdmin == true) {
       return res.status(403).json({
         status: 403,
-        error: 'Admin not allowed!'
+        error: 'Admin not allowed to be a mentor!'
       });
     }
     return res.status(200).json({

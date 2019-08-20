@@ -7,6 +7,12 @@ const occupation = /^[a-zA-Z_ ]{3,}$/;
 const expertise = /^[a-zA-Z_ ]{3,}$/;
 
 class UserValidations {
+  /**
+  * Validate User in SignUp process
+  * @param {object} req
+  * @param {object} res
+  * @param {object} next
+  */
   static validateSignup(req, res, next) {
     try {
       req.body.firstName = req.body.firstName.trim();
@@ -33,7 +39,12 @@ class UserValidations {
       });
     }
   }
-
+  /**
+  * Validate User when Login
+  * @param {object} req
+  * @param {object} res
+  * @param {object} next
+  */
   static validateSignin(req, res, next) {
     try {
 
