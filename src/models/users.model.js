@@ -22,6 +22,18 @@ const users = [
     occupation: 'Singer',
     expertise: 'Singer',
     isAdmin: true
+  },
+  {
+    userId: 3,
+    firstName: 'willo',
+    lastName: 'titoo',
+    email: 'willo@gmail.com',
+    password: '$2b$10$07TXk3jz0wmct68GEhDEoOC3lgAVedBjwaNf2HsBCbJJirwH6T4qm',
+    address: 'Kigali',
+    bio: 'Am doctor of Teeth',
+    occupation: 'Nurse',
+    expertise: 'Nurse',
+    isAdmin: false
   }
 ];
 export default users;
