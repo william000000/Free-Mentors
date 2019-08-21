@@ -13,7 +13,16 @@ class MentorController {
 
     return res.status(200).json({
       status: 200,
-      data: findMentors 
+      data: {
+        mentorId: mentors.length + 1,
+        email: findMentors.email,
+        firstName: findMentors.firstName,
+        lastName: findMentors.lastName,
+        address: findMentors.address,
+        bio: findMentors.bio,
+        occupation: findMentors.occupation,
+        expertise: findMentors.expertise
+      } 
     });
   }
 
