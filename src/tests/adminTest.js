@@ -7,9 +7,20 @@ chai.should();
 
 
 describe("Admin tests", () => {
+  
+  it("Admin should not be able to change user to mentor when is admin ", (done) => {
+    const userId = 2;
+    chai.request(app).patch(`/api/v1/user/${userId}`)
+    .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+    .end((err, res) => {
+      res.should.have.status(403);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
 
   it("Admin should be able to change user to mentor ", (done) => {
-    const userId = 1;
+    const userId = 3;
     chai.request(app).patch(`/api/v1/user/${userId}`)
     .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
     .end((err, res) => {
@@ -30,16 +41,17 @@ describe("Admin tests", () => {
     });
   });
 
-  it("Admin should not be able to change user to mentor when is admin ", (done) => {
-    const userId = 2;
+  it("Admin should not be able to change user to mentor when no token", (done) => {
+    const userId = 1;
     chai.request(app).patch(`/api/v1/user/${userId}`)
-    .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+    .set('auth', '')
     .end((err, res) => {
-      res.should.have.status(403);
+      res.should.have.status(400);
       res.body.should.be.an("object");
       done();
     });
   });
+
 
   it("Admin should not be able to change user to mentor when user not found", (done) => {
     const userId = -1;

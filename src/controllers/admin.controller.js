@@ -26,18 +26,22 @@ class AdminController {
         error: 'Admin not allowed to be a mentor!'
       });
     }
+    const newMentor = {
+      mentorId: mentors.length + 1,
+      email: findUser.email,
+      firstName: findUser.firstName,
+      lastName: findUser.lastName,
+      address: findUser.address,
+      bio: findUser.bio,
+      occupation: findUser.occupation,
+      expertise: findUser.expertise
+    };
+    mentors.push(newMentor);
+    users.splice(users.indexOf(findUser));
     return res.status(200).json({
       status: 200,
       data: {
-        message: "User changed to mentor successfully",
-        mentorId: mentors.length + 1,
-        email: findUser.email,
-        firstName: findUser.firstName,
-        lastName: findUser.lastName,
-        address: findUser.address,
-        bio: findUser.bio,
-        occupation: findUser.occupation,
-        expertise: findUser.expertise
+        message: "User Account changed to mentor successfully",
       }
     });
   }
