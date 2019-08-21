@@ -92,6 +92,22 @@ describe("Authentication tests", () => {
       done();
     });
   });
+  it("User should not be able to signup when user already exist from mentor", (done) => {
+    chai.request(app).post("/api/v1/auth/signup").send({
+      firstName: 'willo',
+      lastName: 'willo',
+      email: 'wilp@gmail.com',
+      password: 'rwanda',
+      address: 'Kigali',
+      bio: 'something',
+      occupation: 'nurse',
+      expertise: 'nurse'
+    }).end((err, res) => {
+      res.should.have.status(409);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
 
   it("User should not be able to signup when invalid password", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
@@ -204,6 +220,15 @@ describe("Authentication tests", () => {
       done();
     });
   });
+  it("User should be able to login when valid data as mentor", (done) => {
+    chai.request(app).post("/api/v1/auth/signin").send({
+      email: 'wilp@gmail.com',
+      password: 'rwanda',
+    }).end((err, res) => {
+      res.should.have.status(200);
+      done();
+    });
+  });
 
   it("User should not be able to login when invalid email", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
@@ -231,6 +256,17 @@ describe("Authentication tests", () => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'willy@gmail.com',
       password: 'rwandaaa',
+    }).end((err, res) => {
+      res.should.have.status(401);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
+
+  it("User should not be able to login when invalid password", (done) => {
+    chai.request(app).post("/api/v1/auth/signin").send({
+      email: 'wilp@gmail.com',
+      password: 'rwandaaahdh',
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");

@@ -13,7 +13,7 @@ class MentorShipController {
     const mentee = req.user;
     const isMentorExist = mentors.find(m => m.mentorId === parseInt(req.body.mentorId));
     const isMentorshipExist = session.find(m => m.mentorId === parseInt(req.body.mentorId) && m.questions === req.body.questions && mentee.userId === m.menteeId);
-    
+
     if (mentee.isAdmin == true) {
       return res.status(403).json({
         status: 403,
@@ -31,6 +31,7 @@ class MentorShipController {
       let newSession = {
         sessionId: session.length + 1,
         mentorId: isMentorExist.mentorId,
+        mentorEmail: isMentorExist.email,
         menteeId: mentee.userId,
         questions: req.body.questions,
         menteeEmail: mentee.email,
