@@ -1,4 +1,5 @@
 import users from '../models/users.model';
+import mentors from '../models/mentor.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
@@ -13,8 +14,9 @@ class UserController {
   */
   static signup(req, res) {
     const isUserExist = users.find(user => user.email === req.body.email);
+    const isMentor = mentors.find(u => u.email === req.body.email);
 
-    if (isUserExist) {
+    if (isUserExist || isMentor) {
       return res.status(409).json({
         status: 409,
         error: "user already exist in the system"
@@ -71,31 +73,52 @@ class UserController {
   */
   static signin(req, res) {
     const isUserExist = users.find(user => user.email === req.body.email);
-    if (!isUserExist) {
+    const isMentor = mentors.find(u => u.email === req.body.email);
+
+    if (!isUserExist && !isMentor) {
       return res.status(401).json({
         status: 401,
         message: "Email not exists"
       });
     }
-
-    const password = bcrypt.compareSync(req.body.password, isUserExist.password);
-    if (!password) {
-      return res.status(401).json({
-        status: 401,
-        message: "Password not exists"
+    if (isUserExist) {
+      const password = bcrypt.compareSync(req.body.password, isUserExist.password);
+      if (!password) {
+        return res.status(401).json({
+          status: 401,
+          message: "Password not exists"
+        });
+      }
+      let token = jwt.sign({
+        userId: isUserExist.userId,
+        email: isUserExist.email,
+        isAdmin: isUserExist.isAdmin
+      }, process.env.secretKey, { expiresIn: '28d' });
+      res.status(200).json({
+        status: 200,
+        message: "User is succefully logged in",
+        data: { token }
+      });
+    } else {
+      const password = bcrypt.compareSync(req.body.password, isMentor.password);
+      if (!password) {
+        return res.status(401).json({
+          status: 401,
+          message: "Password not exists"
+        });
+      }
+      let token = jwt.sign({
+        userId: isMentor.userId,
+        email: isMentor.email,
+        isAdmin: isMentor.isAdmin
+      }, process.env.secretKey, { expiresIn: '28d' });
+      res.status(200).json({
+        status: 200,
+        message: "User is succefully logged in",
+        data: { token }
       });
     }
-    const token = jwt.sign({
-      userId: isUserExist.userId,
-      email: isUserExist.email,
-      isAdmin: isUserExist.isAdmin
-    }, process.env.secretKey, { expiresIn: '28d' });
 
-    res.status(200).json({
-      status: 200,
-      message: "User is succefully logged in",
-      data: { token }
-    });
   }
 }
 export default UserController;
