@@ -107,6 +107,106 @@ describe("MentorShip Session Request tests", () => {
       });
   });
 
+  it("should be able to accept mentorship session request when all data is valid ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${1}/accept`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+  it("should be not able to accept mentorship session request when it is already accepted ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${2}/accept`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldkBnbWFpbC5jb20iLCJpYXQiOjE1NjY0MzA0ODgsImV4cCI6MTU2ODg0OTY4OH0.GVOM_4aRHSbgyoRTtqLRiSx21Mu2mH0odXNdB0om8Ko')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+  it("should not be able to accept mentorship session request when session not given ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${0}/accept`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+  it("should not be able to accept mentorship session request when he is not a mentor of that request ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${1}/accept`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+
+  it("should be able to reject mentorship session request when all data is valid ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${1}/reject`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+  
+  it("should be not able to reject mentorship session request when it is already rejected ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${3}/reject`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldkBnbWFpbC5jb20iLCJpYXQiOjE1NjY0MzA0ODgsImV4cCI6MTU2ODg0OTY4OH0.GVOM_4aRHSbgyoRTtqLRiSx21Mu2mH0odXNdB0om8Ko')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+  
+  it("should not be able to reject mentorship session request when session not given ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${0}/reject`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+  
+  it("should not be able to reject mentorship session request when he is not a mentor of that request ", (done) => {
+    chai.request(app).patch(`/api/v1/sessions/${1}/reject`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+      .end((err, res) => {
+        res.should.have.status(403);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+  it("should be able to view all mentorship session requested ", (done) => {
+    chai.request(app).get(`/api/v1/sessions/`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjQ3ODMwNCwiZXhwIjoxNTY4ODk3NTA0fQ.dOH2n8QG3Ilzwkz_j5RQX6pLBlwevcr4RUVLKZ9qS4Q')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
+  it("should be not able to view all mentorship session requested when no session done against user", (done) => {
+    chai.request(app).get(`/api/v1/sessions/`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjQ3ODM4MiwiZXhwIjoxNTY4ODk3NTgyfQ.8fmclpMPqiyNRfZ6KyrwRdBJXdkijj0epGaXxsLS9GE')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
 });
 
 
