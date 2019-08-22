@@ -118,7 +118,6 @@ class MentorShipController {
             s.status = 'rejected';
             return s;
           });
-
           return res.status(200).json({
             status: 200,
             data: result
@@ -130,7 +129,17 @@ class MentorShipController {
       status: 404,
       error: "Session not found"
     });
-
+  }
+  /**
+  * View all mentorship session request upon(Mentee and Mentor)
+  * @param {object} req
+  * @param {object} res
+  */
+  static viewAllMentorshipSessionRequest(req, res) {
+    const whoLoggedIn = req.user.email;
+    const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
+    if (Sessions.length > 0) { return res.status(200).json({ status: 200, data: Sessions }); }
+    return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
   }
 }
 export default MentorShipController;
