@@ -8,5 +8,6 @@ const router = express.Router();
 const { validateRequest } = validateSession;
 
 router.post('/', validateRequest, userAuth, mentorShipController.createMentorship);
+router.patch('/:sessionId/accept', userAuth, mentorShipController.acceptMentorshipRequest);
 
 export default router;
