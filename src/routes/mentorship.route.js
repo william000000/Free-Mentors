@@ -9,5 +9,6 @@ const { validateRequest } = validateSession;
 
 router.post('/', validateRequest, userAuth, mentorShipController.createMentorship);
 router.patch('/:sessionId/accept', userAuth, mentorShipController.acceptMentorshipRequest);
+router.patch('/:sessionId/reject', userAuth, mentorShipController.rejectMentorshipRequest);
 
 export default router;
