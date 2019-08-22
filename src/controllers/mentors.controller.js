@@ -13,7 +13,7 @@ class MentorController {
 
     return res.status(200).json({
       status: 200,
-      data: findMentors 
+      data: findMentors
     });
   }
 
@@ -27,7 +27,7 @@ class MentorController {
     if (findMentor) {
       return res.status(200).json({
         status: 200,
-        data: findMentor 
+        data: findMentor
       });
     }
     return res.status(404).json({
