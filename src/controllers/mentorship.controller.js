@@ -91,5 +91,46 @@ class MentorShipController {
     });
 
   }
+  /**
+  * Reject mentorship session request
+  * @param {object} req
+  * @param {object} res
+  */
+  static rejectMentorshipRequest(req, res) {
+    const getMentor = req.user.email;
+    let taker = session;
+    const isSessionRequested = taker.find(s => s.sessionId == parseInt(req.params.sessionId));
+    taker = new Array(isSessionRequested);
+    if (isSessionRequested) {
+      if (getMentor !== isSessionRequested.mentorEmail) {
+        return res.status(403).json({
+          status: 403,
+          error: 'Sorry, you are not allowed to reject this request'
+        });
+      } else {
+        if (isSessionRequested.status === 'rejected') {
+          return res.status(400).json({
+            status: 400,
+            error: 'Session Already rejected'
+          });
+        } else {
+          const result = taker.map(s => {
+            s.status = 'rejected';
+            return s;
+          });
+
+          return res.status(200).json({
+            status: 200,
+            data: result
+          });
+        }
+      }
+    }
+    return res.status(404).json({
+      status: 404,
+      error: "Session not found"
+    });
+
+  }
 }
 export default MentorShipController;

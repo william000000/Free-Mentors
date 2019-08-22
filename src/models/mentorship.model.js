@@ -16,6 +16,15 @@ let mentorship = [
     questions: 'what required to be a programmer?',
     menteeEmail: 'willo@gmail.com',
     status: 'accepted'
+  },
+  {
+    sessionId: 3,
+    mentorId: 2,
+    mentorEmail: 'kev@gmail.com',
+    menteeId: 3,
+    questions: 'what is it?',
+    menteeEmail: 'willo@gmail.com',
+    status: 'rejected'
   }
 ];
 export default mentorship;
