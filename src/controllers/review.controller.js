@@ -12,10 +12,9 @@ class ReviewController {
   * @param {object} res
   */
   static reviewMentor(req, res) {
-    const mentee = req.user;
     const isMentorshipSession = session.filter(s => s.sessionId == parseInt(req.params.sessionId));
     const isMentee = users.find(z => z.userId === parseInt(req.user.userId));
-    
+
     const isMenteeWhoReq = session.filter(s => s.menteeId === parseInt(req.user.userId) && s.status === 'accepted');
 
     if (isMentorshipSession.length == 0) {
@@ -53,6 +52,33 @@ class ReviewController {
       });
     }
 
+  }
+
+  /**
+   * Admin Delete a Review 
+   * @param {object} req
+   * @param {object} res
+   */
+  static deleteReview(req, res) {
+    const loggedInChecker = req.user.isAdmin;
+    const isReview = review.find(s => s.sessionId == parseInt(req.params.sessionId));
+    const isAdmin = users.find(z => z.isAdmin === true && req.user.isAdmin === true);
+
+    if (!isAdmin)
+      return res.status(403).json({
+        status: 403,
+        error: 'You are not the Admin'
+      });
+    if (!isReview)
+      return res.status(404).json({
+        status: 404,
+        error: 'The Review not exist'
+      });
+    review.splice(review.indexOf(isReview), 1);
+    return res.status(200).json({
+      status: 200,
+      message: 'Review deleted successfully'
+    });
   }
 }
 export default ReviewController;

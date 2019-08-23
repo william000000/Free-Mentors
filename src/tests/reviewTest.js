@@ -105,6 +105,36 @@ describe("Mentee Review Mentor tests", () => {
       done();
     });
   });
+
+  it("should be able to delete inappropriate review when is admin and review exist ", (done) => {
+    chai.request(app).delete(`/api/v1/sessions/${1}/review`)
+    .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjUxNzY3MiwiZXhwIjoxNTY4OTM2ODcyfQ.V4bBfWw9HibbeYIvywWkc9lOSsjQU_Mr8UvXWjH7vtk')
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
+
+  it("should not be able to delete inappropriate review when review not exist ", (done) => {
+    chai.request(app).delete(`/api/v1/sessions/${0}/review`)
+    .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjUxNzY3MiwiZXhwIjoxNTY4OTM2ODcyfQ.V4bBfWw9HibbeYIvywWkc9lOSsjQU_Mr8UvXWjH7vtk')
+    .end((err, res) => {
+      res.should.have.status(404);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
+
+  it("should not be able to delete inappropriate review when he is not Admin ", (done) => {
+    chai.request(app).delete(`/api/v1/sessions/${1}/review`)
+    .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoid2lsbG9AZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjQ5OTAxMiwiZXhwIjoxNTY4OTE4MjEyfQ.9jrIfmgeLXyZrqyihfoaOa6s32UjH-fXNIfHVrGEVCM')
+    .end((err, res) => {
+      res.should.have.status(403);
+      res.body.should.be.an("object");
+      done();
+    });
+  });
 });
 
 
