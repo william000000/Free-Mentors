@@ -34,7 +34,7 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="html/mentorshipReq.html">MentorShip</a></li>
-      <li><a href="html/signup.html" id="signUpBtn">SignUp</a></li>
+      <li><a href="html/signup.html" id="signUpBtn">Sign up</a></li>
       <li><a href="#" id="userInfos"><img src="assets/icons/user.svg" alt="user-infos" onclick="window.location.href='html/viewAllMentorshipSession.html'"></a></li>
     </ul>
   </nav>
@@ -47,21 +47,21 @@
       <li><a href="html/login.html">Login</a></li>
     </ul>
   </div>
-  <!--At the Beginning signup page----->
+  <!--At the Beginning index page----->
   <div class="containerIndex">
     <div class="homeImage">
       <div class="imagess">
-        <img src="assets/images/earth.jpg" alt="mentors-inspire">
+        <img src="assets/images/coach.jpeg" alt="mentors-inspire">
       </div>
       <div id="inspireWords">
-        <blockquote>"Every great achiever is inspired by a great mentor"</blockquote>
+        <blockquote>"Every Great Achiever Is Inspired By A Great Mentor"</blockquote>
       </div>
       <div class="btnHome">
         <button id="homeBtn" onclick="window.location.href='html/mentorshipReq.html'">Get Free Mentorship</button>
       </div>
 
     </div>
-    <div class="mentors">
+    <div class="mentors" id="topMentor">
       <h2>Top Mentors</h2>
       <ul>
         <li>
@@ -138,7 +138,7 @@
         </li>
 
         <div class="viewMore viewAll">
-          <a href="#" onclick="showMoreMentors()">See More Mentors</a>
+          <a href="#otherMentors" onclick="showMoreMentors()">See More Mentors</a>
         </div>
       </ul>
 
@@ -220,7 +220,7 @@
 
 
         <div class="viewMore" id="LessMentor">
-          <a href="#" onclick="lessMentors()">Top Mentors</a>
+          <a href="#topMentor" onclick="lessMentors()">Top Mentors</a>
         </div>
 
       </ul>
