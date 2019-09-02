@@ -548,7 +548,10 @@ nav ul li a:hover{
   width: 100%;
   height: auto;
   margin-top: -65px;
-  margin-left: 45px;
+  margin-left: 5px;
+}
+.reviewMentorship .btnReviews{
+  margin-left: 10px;
 }
 
 }
@@ -945,6 +948,7 @@ footer{
 }
 .containerMentorBoard table tr td label{
   font-weight: bold;
+  color: green;
 }
 .containerMentorBoard table tr td input {
   width: 100%;
@@ -1012,6 +1016,7 @@ footer{
 }
 .containerAdminChangeUser table label{
   font-weight: bold;
+  color: green;
 }
 
 .containerAdminChangeUser table tr td{
@@ -1055,7 +1060,7 @@ footer{
   width: 100%;
   height: auto;
   top: 80px;
-  left: -50px;
+  left: 0;
   display: none;
   
 }
@@ -1081,10 +1086,12 @@ footer{
   font-size: 16px;
   outline: none;
 }
-
+.btnReviews{
+  margin-left: 150px;
+}
 .reviewMentorship form input[type='submit'], .reviewMentorship form input[type='button']{
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   color: white;
   padding: 10px;
   font-weight: bold;
@@ -1092,9 +1099,10 @@ footer{
   box-shadow: 2px 1px black;
   background: rgb(62, 76, 87);
   border-radius: 7px;
-  margin: 10px auto;
+  margin: 15px 10px;
   outline: none;
 }
+
 .reviewMentorship form input[type=submit]:hover, .reviewMentorship form input[type='button']:hover{
   background: transparent;
   color: black;
