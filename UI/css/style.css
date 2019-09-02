@@ -4,7 +4,7 @@ body{
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: cursive;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   background: rgb(227, 236, 232);
  
 }
@@ -83,10 +83,6 @@ nav ul li a{
 nav ul li a:hover{
   border-top: 3px solid gray;
 }
-nav ul li:nth-child(3) a:hover{
-  background: rgb(196, 192, 192);
- 
-}
 #btntoggle{
   width: 3%;
   padding-top: 10px;
@@ -119,50 +115,7 @@ nav ul li:nth-child(3) a:hover{
   max-height: 200px;
 }
 
-/*navigation header------------------------*/
-#header-nav{
-  padding: 3px 0;
-  /* box-sizing: border-box; */
-  margin-top: 0;
-  background: rgb(14, 17, 34);
-  width: 100%; 
-  height: 34px;
 
-}
-header #searchbtn{
-  width:90%;
-  border-radius: 4px;
-  border:0;
-  margin-top: 17px;
-  position: relative;
-  padding: 5px 10px;
-  height: 20%;
-  outline: none;
-}
-header ul{
-  display: inline-flex;
-  margin-top: -8px;
-  padding: 0 80px;
-  margin-left: 800px; 
-}
-header ul li{
-  color: white;
-  list-style: none;
-}
-
-header ul li a{
-  display: block;
-  text-decoration: none;
-  padding: 0 20px;
-  margin: 20px 0;
-  color: white;
-  font-size: 12px;
-}
-header ul li a:hover{
-  color: rgb(161, 178, 197);
-  cursor: pointer;
-  font-weight: bold;
-}
 #signUpBtn{
   border: 1px solid rgb(67, 121, 121);
   border-radius: 5px;
@@ -355,6 +308,10 @@ header ul li a:hover{
   }
  
 }
+/*Mac Book Pro's Responsiveness*/
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+
+}
 /*Large Screen--------------------------*/
 @media(min-width: 2560px){
 
@@ -413,9 +370,7 @@ header ul li a:hover{
   .nav-menu ul{
     display: none;
   }
-  #header-nav{
-    display: none;
-  }
+  
   /*login responsivenss*/
   #titleLogin h1{
     margin-left: 130px;
@@ -497,7 +452,7 @@ header ul li a:hover{
     margin: -110px -600px;
   }
   .containerIndex .mentors ul li{
-    margin: 10px 0 10px -15px; 
+    margin: 10px auto; 
   }
   .mentors #otherMentors{
     text-align: center;
@@ -729,6 +684,8 @@ header ul li a:hover{
 .mentors ul{
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  padding:  0 5px;
  
 }
 .mentors ul li{ 
@@ -737,7 +694,8 @@ header ul li a:hover{
   max-width: 30%;
   height: 300px;
   list-style: none;
-  margin: 10px 20px 10px 0;
+  margin: 10px auto;
+  padding: 0 auto;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px grey;
   text-align: center;
@@ -800,7 +758,7 @@ ul li figure blockquote{
   color: black;
   font-size: 1em;
   font-weight: bold;
-  margin: 10px 10px;
+  margin: 10px 50px;
   float: right;
 }
 
@@ -838,9 +796,9 @@ footer{
   height: 50px;
 }
  #footer{
-  position: relative;
+  position: fixed;
   width: 100%;
-  bottom: -200px;
+  bottom: 0;
   height: 50px;
 }
 /*Footer Ends -------------*/
@@ -967,7 +925,7 @@ footer{
   display: flex;
   width: 100%;
   height: auto;
-  max-width: 700px;
+  max-width: 1200px;
   margin: auto;
   background: white;
   padding: 10px;
@@ -975,11 +933,14 @@ footer{
   box-shadow: 2px 2px rgb(158, 158, 158);
   
 }
+.containerMentorBoard tbody{
+  width: 100%;
+}
 .containerMentorBoard table tr td, .containerMentorBoard table th{
   border-bottom: 2px solid black;
   margin: 10px 50px;
   padding: auto;
- 
+  width: 10%;
   
 }
 .containerMentorBoard table tr td label{
@@ -987,19 +948,22 @@ footer{
 }
 .containerMentorBoard table tr td input {
   width: 100%;
+  max-width: 140px;
   height: 30px;
   color: black;
   padding: 10px;
-  font-size: 17px;
-  border: 1px solid rgb(139, 139, 139);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 10px;
+  border: 2px solid rgb(139, 139, 139);
   background: rgb(195, 202, 207);
   border-radius: 4px;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 5px 10px;
   outline: none;
 }
 .containerMentorBoard table tr td select{
   width: 100%;
+  max-width: 140px;
   border-radius: 5px;
   margin: 0 auto;
   padding: 5px;
@@ -1024,11 +988,13 @@ footer{
   text-shadow: 1px 1px white;
   font-size: 35px;
 }
-
+.containerAdminChangeUser tbody{
+  width: 100%;
+}
 .containerAdminChangeUser table{
   display: flex;
   width:  100%;
-  max-width: 700px;
+  max-width: 1200px;
   height: auto;
   margin: auto;
   background: white;
@@ -1038,40 +1004,36 @@ footer{
   
 }
 .containerAdminChangeUser table tr td, .containerAdminChangeUser table th{
-  border-bottom: 1px solid black;
-  margin: 10px 50px;
+  border-bottom: 2px solid black;
+  margin: 10px auto;
   padding: auto;
- 
+  width: 5%;
   
 }
+.containerAdminChangeUser table label{
+  font-weight: bold;
+}
+
 .containerAdminChangeUser table tr td{
   font-size: 14px;
 }
-.containerAdminChangeUser table tr td label{
-  font-weight: bold;
-}
+
 .containerAdminChangeUser table tr td input {
   width: 100%;
+  max-width: 140px;
   height: 30px;
   color: black;
   padding: 10px;
   font-weight: 500;
   font-size: 14px;
-  border: 1px solid rgb(139, 139, 139);
+  line-height: 10px;
+  border: 2px solid rgb(139, 139, 139);
   background: rgb(195, 202, 207);
   border-radius: 4px;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 5px 10px;
   outline: none;
 }
-.containerAdminChangeUser table tr td select{
-  width: 100%;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 5px;
-  font-size: 15px;
-  outline: none;
-}
+
 .containerAdminChangeUser table tr:nth-child(even):hover, .containerAdminChangeUser table tr:nth-child(odd):hover{
   cursor: pointer;
   background: rgb(210, 210, 211);
@@ -1099,6 +1061,7 @@ footer{
 }
 .reviewMentorship form{
   display: flex;
+  width: 60%;
   flex-direction: column;
   padding: 30px;
   margin: 80px auto;
@@ -1144,7 +1107,7 @@ footer{
   position: absolute;
   text-shadow: 1px 1px white;
   font-size: 35px;
-  margin-left: 510px;
+  margin-left: 600px;
 
   
 }
@@ -1159,8 +1122,8 @@ footer{
 .containerUserBoard table{
   display: flex;
   width: 100%;
+  max-width: 1200px;
   height: auto;
-  max-width: 700px;
   margin: auto;
   background: white;
   padding: 10px;
@@ -1172,7 +1135,7 @@ footer{
   width: 100%;
 }
 .containerUserBoard table tr{
-  width: 100%;
+  font-size: 14px;
 }
 .containerUserBoard table tr:nth-child(even):hover, .containerUserBoard table tr:nth-child(odd):hover{
   background: #ccc;
@@ -1195,12 +1158,19 @@ footer{
   color: black;
   padding: 10px;
   font-size: 17px;
-  border: 1px solid rgb(139, 139, 139);
+  border: 2px solid rgb(139, 139, 139);
   background: rgb(195, 202, 207);
   border-radius: 4px;
   margin: 0 auto;
   padding: 5px;
   outline: none;
+}
+.containerUserBoard table tr td, .containerUserBoard table th{
+  border-bottom: 2px solid black;
+  margin: 10px 50px;
+  padding: auto;
+  width: 10%;
+  
 }
 .containerUserBoard table tr:nth-child(even){
   background: rgba(236, 236, 236, 0.733);

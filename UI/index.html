@@ -12,15 +12,7 @@
 </head>
 
 <body>
-  <!--My Header navigation bar-->
-  <header id="header-nav">
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="html/login.html">Login</a></li>
-      <li><input type="text" placeholder="Search" id="searchbtn"></li>
-    </ul>
-  </header>
+
   <!-- navigation bar -->
   <nav class="nav-menu">
     <div id="btntoggle" onclick="displaySideBar()">
@@ -34,6 +26,8 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="html/mentorshipReq.html">MentorShip</a></li>
+      <li><a href="./html/userToMentor.html">Admin</a></li>
+      <li><a href="./html/login.html">Login</a></li>
       <li><a href="html/signup.html" id="signUpBtn">Sign up</a></li>
       <li><a href="#" id="userInfos"><img src="assets/icons/user.svg" alt="user-infos" onclick="window.location.href='html/viewAllMentorshipSession.html'"></a></li>
     </ul>
@@ -43,6 +37,7 @@
     <ul>
       <li id="close" onclick="closebtn()">&times;</li>
       <li><a href="#">Home</a></li>
+      <li><a href="./html/userToMentor.html">Admin</a></li>
       <li><a href="html/signup.html">SignUp</a></li>
       <li><a href="html/login.html">Login</a></li>
     </ul>
@@ -217,8 +212,7 @@
             <img src="assets/icons/comment.svg" alt="comment" onclick="displayReview()">
           </div>
         </li>
-
-
+     
         <div class="viewMore" id="LessMentor">
           <a href="#topMentor" onclick="lessMentors()">Top Mentors</a>
         </div>
