@@ -25,4 +25,6 @@ function lessMentors(){
 function displayReview(){
   document.querySelector('.reviewMentorship').style.display = 'flex';
   document.querySelector('.mentors').style.opacity = '0.2';
+  document.querySelector('.containerIndex').style.opacity = '0.2';
+  
 }
