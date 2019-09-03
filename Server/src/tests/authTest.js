@@ -13,7 +13,7 @@ describe("Authentication tests", () => {
       firstName: 'willy',
       lastName: 'willo',
       email: 'siu@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -30,7 +30,7 @@ describe("Authentication tests", () => {
       firstName: '',
       lastName: 'willo',
       email: 'siu@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -47,7 +47,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: '',
       email: 'siu@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -64,7 +64,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'siu@gmail',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -81,7 +81,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'willy@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -97,7 +97,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'wilp@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'nurse',
@@ -131,7 +131,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'wil@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: '',
       bio: 'something',
       occupation: 'nurse',
@@ -148,7 +148,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'will@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: '',
       occupation: 'nurse',
@@ -165,7 +165,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'willyryr@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: '',
       occupation: 'jdjdjdjd',
@@ -182,7 +182,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'wiouoooo@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: '',
@@ -199,7 +199,7 @@ describe("Authentication tests", () => {
       firstName: 'willo',
       lastName: 'willo',
       email: 'willfgfg@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
       address: 'Kigali',
       bio: 'something',
       occupation: 'jdfjbdjbfd',
@@ -214,7 +214,7 @@ describe("Authentication tests", () => {
   it("User should be able to login when valid data", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'willy@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
     }).end((err, res) => {
       res.should.have.status(200);
       done();
@@ -223,7 +223,7 @@ describe("Authentication tests", () => {
   it("User should be able to login when valid data as mentor", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'wilp@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
     }).end((err, res) => {
       res.should.have.status(200);
       done();
@@ -233,7 +233,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when invalid email", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'willy',
-      password: 'rwanda',
+      password: 'Rwanda1!',
     }).end((err, res) => {
       res.should.have.status(400);
       res.body.should.be.an("object");
@@ -244,7 +244,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when email not exist", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'willyfegfgbjfj@gmail.com',
-      password: 'rwanda',
+      password: 'Rwanda1!',
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");
@@ -255,7 +255,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when invalid password", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'willy@gmail.com',
-      password: 'rwandaaa',
+      password: 'Rwanda1!aa',
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");
@@ -266,7 +266,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when invalid password", (done) => {
     chai.request(app).post("/api/v1/auth/signin").send({
       email: 'wilp@gmail.com',
-      password: 'rwandaaahdh',
+      password: 'Rwanda1!aahdh',
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");

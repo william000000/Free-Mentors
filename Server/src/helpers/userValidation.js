@@ -1,5 +1,5 @@
 const email = /^\S+@[\w\-]+\.[A-Za-z ]{2,}$/;
-const password = /^[A-Za-z0-9]{6,}$/;
+const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 const names = /^[A-Za-z]{1,}$/;
 const address = /^[A-Za-z0-9]{2,}$/;
 const bio = /^\w+(\s+\w+)*$/;
@@ -24,7 +24,7 @@ class UserValidations {
       req.body.occupation = req.body.occupation.trim();
 
       if (!email.test(req.body.email)) throw new Error('invalid email');
-      if (!((req.body.password).length > 5)) throw new Error('invalid password');
+      if (!password.test((req.body.password))) throw new Error('invalid password');
       if (!names.test(req.body.firstName)) throw new Error('invalid name');
       if (!names.test(req.body.lastName)) throw new Error('invalid names');
       if (!address.test(req.body.address)) throw new Error('invalid address');

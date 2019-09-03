@@ -37,11 +37,13 @@ class MentorController {
   * @param {object} res
   */
   static getOneMentor(req, res) {
-    const findMentor = mentors.find(mt => mt.mentorId == req.params.mentorId);
+    const findMentor = mentors.find(mt => mt.mentorId == parseInt(req.params.mentorId));
+
     if (findMentor) {
+      const { password, ...mentor } = findMentor;
       return res.status(200).json({
         status: 200,
-        data: findMentor
+        data: { ...mentor }
       });
     }
     return res.status(404).json({

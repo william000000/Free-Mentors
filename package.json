@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --export=text mocha --require @babel/register src/tests/*.js --exit",
-    "dev": "nodemon --exec babel-node src/app.js",
-    "start": "babel-node src/app.js",
+    "test": "nyc --export=text mocha --require @babel/register Server/src/tests/*.js --exit",
+    "dev": "nodemon --exec babel-node Server/src/app.js",
+    "start": "babel-node Server/src/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
