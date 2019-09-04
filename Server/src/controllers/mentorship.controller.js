@@ -1,5 +1,6 @@
 import mentors from '../models/mentor.model';
 import session from '../models/mentorship.model';
+import review from '../models/review.model';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -77,7 +78,6 @@ class MentorShipController {
             s.status = 'accepted';
             return s;
           });
-
           return res.status(200).json({
             status: 200,
             data: result
@@ -138,6 +138,7 @@ class MentorShipController {
   static viewAllMentorshipSessionRequest(req, res) {
     const whoLoggedIn = req.user.email;
     const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
+
     if (Sessions.length > 0) { return res.status(200).json({ status: 200, data: Sessions }); }
     return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
   }

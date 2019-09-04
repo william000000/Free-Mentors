@@ -5,9 +5,9 @@ import validateReviews from '../helpers/reviewValidation';
 
 const router = express.Router();
 
-const { validateReview } = validateReviews;
+const { validateReview, validateDeleteReview } = validateReviews;
 
 router.post('/:sessionId/review', validateReview, userAuth, reviewController.reviewMentor);
-router.delete('/:sessionId/review', userAuth, reviewController.deleteReview);
+router.delete('/:sessionId/review', validateDeleteReview, userAuth, reviewController.deleteReview);
 
 export default router;

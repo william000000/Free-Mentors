@@ -39,11 +39,6 @@ class UserController {
     const token = jwt.sign({
       userId: newUser.userId,
       email: newUser.email,
-      firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      bio: newUser.bio,
-      occupation: newUser.occupation,
-      expertise: newUser.expertise,
       isAdmin: false
 
     }, process.env.secretKey, { expiresIn: '28d' });
@@ -52,7 +47,6 @@ class UserController {
       message: "User created succefully",
       data: {
         token: token,
-        message: "User created succefully",
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         email: newUser.email,
@@ -93,7 +87,7 @@ class UserController {
         userId: isUserExist.userId,
         email: isUserExist.email,
         isAdmin: isUserExist.isAdmin
-      }, process.env.secretKey, { expiresIn: '28d' });
+      }, process.env.secretKey);
       res.status(200).json({
         status: 200,
         message: "User is succefully logged in",
