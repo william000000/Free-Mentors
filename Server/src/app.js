@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api/v1/auth/', userRoute);
+app.use('/api/v2/auth/', userRoute);
 app.use('/api/v1/user', adminRoute);
 app.use('/api/v1/mentors', mentorRoute);
 app.use('/api/v1/sessions', sessionRoute);
