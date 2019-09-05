@@ -73,54 +73,56 @@ class UserController {
   * @param {object} req
   * @param {object} res
   */
-  static signin(req, res) {
-    const isUserExist = users.find(user => user.email === req.body.email);
-    const isMentor = mentors.find(u => u.email === req.body.email);
-
-    if (!isUserExist && !isMentor) {
-      return res.status(401).json({
-        status: 401,
-        message: "Email not exists"
-      });
-    }
-    if (isUserExist) {
-      const password = bcrypt.compareSync(req.body.password, isUserExist.password);
-      if (!password) {
+  static async signin(req, res) {
+    const isUserExist = await executor(queries.users.isUserExist, [req.body.email]);
+    const isMentor = await executor(queries.mentors.isMentor, [req.body.email]);
+    try {
+      if (!isUserExist[0] && !isMentor[0]) {
         return res.status(401).json({
           status: 401,
-          message: "Password not exists"
+          message: "Email not exists"
         });
       }
-      let token = jwt.sign({
-        userId: isUserExist.userId,
-        email: isUserExist.email,
-        isAdmin: isUserExist.isAdmin
-      }, process.env.secretKey);
-      res.status(200).json({
-        status: 200,
-        message: "User is succefully logged in",
-        data: { token }
-      });
-    } else {
-      const password = bcrypt.compareSync(req.body.password, isMentor.password);
-      if (!password) {
-        return res.status(401).json({
-          status: 401,
-          message: "Password not exists"
+      if (isUserExist[0]) {
+        const password = bcrypt.compareSync(req.body.password, isUserExist[0].password);
+        if (!password) {
+          return res.status(401).json({
+            status: 401,
+            message: "Password not exists"
+          });
+        }
+        let token = jwt.sign({
+          userId: isUserExist[0].userid,
+          email: isUserExist[0].email,
+          isAdmin: isUserExist[0].isadmin
+        }, process.env.secretKey);
+        res.status(200).json({
+          status: 200,
+          message: "User is succefully logged in",
+          data: { token }
+        });
+      } else {
+        const password = bcrypt.compareSync(req.body.password, isMentor[0].password);
+        if (!password) {
+          return res.status(401).json({
+            status: 401,
+            message: "Password not exists"
+          });
+        }
+        let token = jwt.sign({
+          userId: isMentor[0].userid,
+          email: isMentor[0].email,
+          isAdmin: isMentor[0].isadmin
+        }, process.env.secretKey, { expiresIn: '28d' });
+        res.status(200).json({
+          status: 200,
+          message: "User is succefully logged in",
+          data: { token }
         });
       }
-      let token = jwt.sign({
-        userId: isMentor.userId,
-        email: isMentor.email,
-        isAdmin: isMentor.isAdmin
-      }, process.env.secretKey, { expiresIn: '28d' });
-      res.status(200).json({
-        status: 200,
-        message: "User is succefully logged in",
-        data: { token }
-      });
+    } catch (err) {
+      return res.status(400).json(err.message);
     }
-
   }
 }
 export default UserController;

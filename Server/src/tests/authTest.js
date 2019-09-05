@@ -9,7 +9,7 @@ chai.should();
 describe("Authentication tests", () => {
 
   it("User should be able to signup when data are valid ", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willy',
       lastname: 'willo',
       email: 'siu@gmail.com',
@@ -26,7 +26,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid firstname", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: '',
       lastname: 'willo',
       email: 'siu@gmail.com',
@@ -43,7 +43,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid lastname", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: '',
       email: 'siu@gmail.com',
@@ -60,7 +60,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid email", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'siu@gmail',
@@ -77,7 +77,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when user already exist", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'willy@gmail.com',
@@ -93,7 +93,7 @@ describe("Authentication tests", () => {
     });
   });
   it("User should not be able to signup when user already exist from mentor", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'wilp@gmail.com',
@@ -110,7 +110,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid password", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'wiy@gmail.com',
@@ -127,7 +127,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid address", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'wil@gmail.com',
@@ -144,7 +144,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid bio", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'will@gmail.com',
@@ -161,7 +161,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid bio", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'willyryr@gmail.com',
@@ -178,7 +178,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid occupation", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'wiouoooo@gmail.com',
@@ -195,7 +195,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when invalid expertise", (done) => {
-    chai.request(app).post("/api/v1/auth/signup").send({
+    chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willo',
       lastname: 'willo',
       email: 'willfgfg@gmail.com',
@@ -212,7 +212,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should be able to login when valid data", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy@gmail.com',
       password: 'Rwanda1!',
     }).end((err, res) => {
@@ -221,7 +221,7 @@ describe("Authentication tests", () => {
     });
   });
   it("User should be able to login when valid data as mentor", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'wilp@gmail.com',
       password: 'Rwanda1!',
     }).end((err, res) => {
@@ -231,7 +231,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to login when invalid email", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy',
       password: 'Rwanda1!',
     }).end((err, res) => {
@@ -242,7 +242,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to login when email not exist", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willyfegfgbjfj@gmail.com',
       password: 'Rwanda1!',
     }).end((err, res) => {
@@ -253,7 +253,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to login when invalid password", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy@gmail.com',
       password: 'Rwanda1!aa',
     }).end((err, res) => {
@@ -264,7 +264,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to login when invalid password", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'wilp@gmail.com',
       password: 'Rwanda1!aahdh',
     }).end((err, res) => {
@@ -274,7 +274,7 @@ describe("Authentication tests", () => {
     });
   });
   it("User should not be able to login when no password", (done) => {
-    chai.request(app).post("/api/v1/auth/signin").send({
+    chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy@gmail.com',
       password: '',
     }).end((err, res) => {
