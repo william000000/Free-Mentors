@@ -1,4 +1,4 @@
-import chai from "chai";
+  import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../app";
 chai.use(chaiHttp);
@@ -10,8 +10,8 @@ describe("Authentication tests", () => {
 
   it("User should be able to signup when data are valid ", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willy',
-      lastName: 'willo',
+      firstname: 'willy',
+      lastname: 'willo',
       email: 'siu@gmail.com',
       password: 'Rwanda1!1!',
       address: 'Kigali',
@@ -27,8 +27,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid firstname", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: '',
-      lastName: 'willo',
+      firstname: '',
+      lastname: 'willo',
       email: 'siu@gmail.com',
       password: 'Rwanda1!1!',
       address: 'Kigali',
@@ -44,8 +44,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid lastname", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: '',
+      firstname: 'willo',
+      lastname: '',
       email: 'siu@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -61,8 +61,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid email", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'siu@gmail',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -78,8 +78,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when user already exist", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'willy@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -94,8 +94,8 @@ describe("Authentication tests", () => {
   });
   it("User should not be able to signup when user already exist from mentor", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'wilp@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -111,8 +111,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid password", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'wiy@gmail.com',
       password: 'ki',
       address: 'Kigali',
@@ -128,8 +128,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid address", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'wil@gmail.com',
       password: 'Rwanda1!',
       address: '',
@@ -145,8 +145,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid bio", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'will@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -162,8 +162,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid bio", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'willyryr@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -179,8 +179,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid occupation", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'wiouoooo@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
@@ -196,8 +196,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to signup when invalid expertise", (done) => {
     chai.request(app).post("/api/v1/auth/signup").send({
-      firstName: 'willo',
-      lastName: 'willo',
+      firstname: 'willo',
+      lastname: 'willo',
       email: 'willfgfg@gmail.com',
       password: 'Rwanda1!',
       address: 'Kigali',
