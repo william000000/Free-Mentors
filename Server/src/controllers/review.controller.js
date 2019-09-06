@@ -13,9 +13,9 @@ class ReviewController {
   */
   static reviewMentor(req, res) {
     const { sessionId } = req.params;
-    const isMentorshipSession = session.find(s => s.sessionId == parseInt(sessionId));
-    const isMentee = users.find(z => z.userId === parseInt(req.user.userId));
-    const isMenteeWhoReq = session.find(s => s.menteeId === parseInt(req.user.userId));
+
+    const isMentorshipSession = session.find(s => s.sessionId == parseInt(sessionId)); const isMentee = users.find(z => z.email === req.user.email);
+    const isMenteeWhoReq = session.find(s => s.menteeEmail === req.user.email);
     const { remark, score } = req.body;
 
     if (!isMentorshipSession) {
@@ -24,6 +24,7 @@ class ReviewController {
         error: 'this mentorship session not exist'
       });
     }
+
 
     if (isMentee) {
       if (isMenteeWhoReq.sessionId !== parseInt(sessionId) || isMenteeWhoReq.status !== 'accepted') {

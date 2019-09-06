@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/william000000/Free-Mentors.svg?branch=develop)](https://travis-ci.org/william000000/Free-Mentors)
 [![Coverage Status](https://coveralls.io/repos/github/william000000/Free-Mentors/badge.svg?branch=develop)](https://coveralls.io/github/william000000/Free-Mentors?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8ee023386df711ab3b1b/maintainability)](https://codeclimate.com/github/william000000/Free-Mentors/maintainability)
+[![Maintainability](https://api.codeclimate.com/v2/badges/8ee023386df711ab3b1b/maintainability)](https://codeclimate.com/github/william000000/Free-Mentors/maintainability)
 
 # Free-Mentors
 
@@ -48,9 +48,17 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 
 | Request Url | Methods  | Description  |
 | ------- | --- | --- |
-| /api/v1/auth/signup | POST | Create user account |
-| /api/v1/auth/signin | POST | User Login  |
-
+| /api/v2/auth/signup | POST | Create user account |
+| /api/v2/auth/signin | POST | User Login  |
+| /api/v2/user/:id | PATCH | Admin Change User to Mentor |
+| /api/v2/mentors | GET | Get all Mentors |
+| /api/v2/mentor/:id | GET | Get specific Mentor |
+| /api/v2/sessions | POST | Create Mentorship sessions |
+| /api/v2/sessions/:id/accept | PATCH | Mentor Accept Session |
+| /api/v2/sessions/:id/reject | PATCH | Mentor Reject Session |
+| /api/v2/sessions  | GET | Get all mentorship against mentor or Mentee |
+| /api/v2/sessions/:sessionId/review | POST | Review a Mentor after Mentorship |
+| /api/v2/sessions/:sessionId/review | DELETE | Delete inappropriate review |
 
 
 
