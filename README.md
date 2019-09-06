@@ -36,12 +36,12 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 
 ## Run the server
 ```
-& npm run dev
+> npm run dev
 ```
 ## Run the test
 
 ```
-& npm test
+> npm test
 ```
 
 ## API Endpoints
@@ -83,6 +83,8 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 ```
 Heroku
 ```
+### API Documentation
+[Documentation](https://freementors.herokuapp.com/apiDocumentation)
 ### Pivotal Tracker Stories 
 [Project Stories](https://www.pivotaltracker.com/n/projects/2379756)
 ### Heroku link
