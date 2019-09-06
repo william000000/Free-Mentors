@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm run drop && npm run create && nyc --export=text mocha --require @babel/register --require @babel/polyfill Server/src/tests/*.js --exit",
+    "test": "npm run drop && npm run create && nyc --report=text mocha --require @babel/register --require @babel/polyfill Server/src/tests/*.js --exit",
     "dev": "nodemon --exec babel-node Server/src/app.js",
-    "start": "babel-node Server/src/app.js",
+    "start": "npm run create && babel-node Server/src/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "create": "babel-node Server/src/services/tables.js",
     "drop": "babel-node Server/src/services/drop.js"
@@ -35,7 +35,8 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -45,6 +46,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
     "mocha": "^6.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1"
   }

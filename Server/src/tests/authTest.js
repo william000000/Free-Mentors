@@ -1,4 +1,4 @@
-  import chai from "chai";
+import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../app";
 chai.use(chaiHttp);
@@ -7,6 +7,13 @@ chai.should();
 
 
 describe("Authentication tests", () => {
+
+  it("Any route to my app ", (done) => {
+    chai.request(app).get("/").end((err, res) => {
+      res.should.have.status(200);
+      done();
+    });
+  });
 
   it("User should be able to signup when data are valid ", (done) => {
     chai.request(app).post("/api/v2/auth/signup").send({

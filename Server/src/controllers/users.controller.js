@@ -38,11 +38,6 @@ class UserController {
       const token = jwt.sign({
         userId: resultdb[0].id,
         email: resultdb[0].email,
-        firstName: resultdb[0].firstname,
-        lastName: resultdb[0].lastname,
-        address: resultdb[0].address,
-        occupation: resultdb[0].lastname,
-        expertise: resultdb[0].lastname,
         isAdmin: resultdb[0].isadmin
 
       }, process.env.secretKey, { expiresIn: '28d' });
@@ -113,7 +108,7 @@ class UserController {
           userId: isMentor[0].userid,
           email: isMentor[0].email,
           isAdmin: isMentor[0].isadmin
-        }, process.env.secretKey, { expiresIn: '28d' });
+        }, process.env.secretKey);
         res.status(200).json({
           status: 200,
           message: "User is succefully logged in",
