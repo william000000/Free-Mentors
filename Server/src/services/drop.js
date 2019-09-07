@@ -3,7 +3,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+let connection;
+
+connection = (process.env.NODE_ENV == 'test') ? process.env.TEST_DATABASE_URL : process.env.DATABASE_URL;
+
+const pool = new Pool({ connectionString: connection });
 
 const dropTable = [
   `DROP TABLE IF EXISTS reviews`,
@@ -16,7 +20,6 @@ const dropTables = async () => {
   for (const i of dropTable) {
     await pool.query(i);
   }
-  console.log('dropped');
 };
 
 dropTables();
