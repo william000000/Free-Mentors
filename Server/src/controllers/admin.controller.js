@@ -1,5 +1,5 @@
-import users from '../models/users.model';
-import mentors from '../models/mentor.model';
+import executor from '../services/config';
+import myQuery from '../services/queries';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -9,41 +9,32 @@ class AdminController {
   * @param {object} req
   * @param {object} res
   */
-  static changeUserToMentor(req, res) {
+  static async changeUserToMentor(req, res) {
 
-    const findUser = users.find(m => m.userId == parseInt(req.params.userId));
-
-    if (!findUser) {
-      return res.status(404).json({
-        status: 404,
-        error: 'User Not Found'
-      });
-    }
-
-    if (findUser.isAdmin == true) {
-      return res.status(403).json({
-        status: 403,
-        error: 'Admin not allowed to be a mentor!'
-      });
-    }
-    const newMentor = {
-      mentorId: mentors.length + 1,
-      email: findUser.email,
-      firstName: findUser.firstName,
-      lastName: findUser.lastName,
-      address: findUser.address,
-      bio: findUser.bio,
-      occupation: findUser.occupation,
-      expertise: findUser.expertise
-    };
-    mentors.push(newMentor);
-    users.splice(users.indexOf(findUser));
-    return res.status(200).json({
-      status: 200,
-      data: {
-        message: "User Account changed to mentor successfully",
+    try {
+      const findUser = await executor(myQuery.users.findByid, [req.params.userId]);
+      if (!findUser[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'User Not Found'
+        });
       }
-    });
+      if (findUser[0].isadmin === 'true') {
+        return res.status(403).json({
+          status: 403,
+          error: 'Admin not allowed to be a mentor!'
+        });
+      }
+
+      let isMentor = 'true';
+      const updateUser = await executor(myQuery.users.userToMentor, [isMentor, req.params.userId]);
+      return res.status(200).json({
+        status: 200,
+        data: { message: "User Account changed to mentor successfully" }
+      });
+    } catch (err) {
+      return res.status(400).json(err.message);
+    }
   }
 }
 export default AdminController;
