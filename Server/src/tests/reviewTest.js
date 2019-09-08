@@ -8,19 +8,19 @@ chai.should();
 
 describe("Mentee Review Mentor tests", () => {
 
-  // it("should be able to review a mentorship after session ", (done) => {
-  //   chai.request(app).post(`/api/v2/sessions/${2}/review`)
-  //     .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoid2lsbG9AZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NzUzNTA3NX0.jw1kMtKCgYHK9EUBvvC50Vi0STxH8g6GYepEvENwfU0')
-  //     .send({
-  //       score: 3,
-  //       remark: 'hgshgdhs sjfgs?'
-  //     })
-  //     .end((err, res) => {
-  //       res.should.have.status(200);
+  it("should be able to review a mentorship after session ", (done) => {
+    chai.request(app).post(`/api/v2/sessions/${2}/review`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoid2lsbG9AZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NzUzNTA3NX0.jw1kMtKCgYHK9EUBvvC50Vi0STxH8g6GYepEvENwfU0')
+      .send({
+        score: 3,
+        remark: 'hgshgdhs sjfgs?'
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
       
-  //       done();
-  //     });
-  // });
+        done();
+      });
+  });
 
   it("should be not able to review a mentorship after session when no score ", (done) => {
     chai.request(app).post(`/api/v2/sessions/${2}/review`)

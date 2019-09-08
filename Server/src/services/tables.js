@@ -52,16 +52,16 @@ CREATE TABLE IF NOT EXISTS reviews(
 )`;
 
   const dummyData = [
-    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isAdmin) VALUES('willy', 'tony', 'willy@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurse', 'Nurse', 'false')`,
+    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('willy', 'tony', 'willy@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurse', 'Nurse', 'false', 'false')`,
 
-    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isAdmin) VALUES('bob', 'marley', 'bob@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'jamaica','Am singer in Reggae style', 'Singer', 'Singer', 'true')`,
+    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('bob', 'marley', 'bob@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'jamaica','Am singer in Reggae style', 'Singer', 'Singer', 'false', 'true')`,
 
-    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isAdmin) VALUES('willo', 'titoo', 'willo@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurse', 'Nurse', 'false')`,
+    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('willo', 'titoo', 'willo@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurse', 'Nurse', 'false','false')`,
 
 
-    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise) VALUES('willy', 'tony', 'wilp@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse')`,
+    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('willy', 'tony', 'wilp@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse', 'true', 'false')`,
 
-    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise) VALUES('wihhh', 'kevin', 'kev@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse')`,
+    `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('wihhh', 'kevin', 'kev@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse', 'true', 'false')`,
 
 
     `INSERT INTO mentorships(mentorId, mentorEmail, menteeId, questions, menteeEmail, status) VALUES(1, 'wilp@gmail.com', 1, 'what required to be a programmer', 'willy@gmail.com', 'pending')`,
@@ -85,6 +85,8 @@ CREATE TABLE IF NOT EXISTS reviews(
 
     for (const datas of dummyData) {
       await pool.query(datas);
+      console.log('dumy');
+      
     }
   }
 };
