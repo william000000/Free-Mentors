@@ -10,7 +10,8 @@ const users = {
   isUserExist: `SELECT * FROM users WHERE email = $1`,
   findByid: `SELECT * FROM users WHERE id=$1`,
   userToMentor: `UPDATE users SET isMentor=$1 WHERE id=$2 RETURNING *`,
-  isAdmin: `SELECT isadmin FROM users WHERE isadmin='true'`
+  isAdmin: `SELECT isadmin FROM users WHERE isadmin='true'`,
+  findAllMentors: `SELECT firstname, lastname, email, address, bio, occupation, expertise, isMentor, isAdmin FROM users WHERE isMentor='true'`
 };
 
 

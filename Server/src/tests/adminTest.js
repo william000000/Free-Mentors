@@ -52,7 +52,6 @@ describe("Admin tests", () => {
     });
   });
 
-
   it("Admin should not be able to change user to mentor when user not found", (done) => {
     const userId = -1;
     chai.request(app).patch(`/api/v2/user/${userId}`)
