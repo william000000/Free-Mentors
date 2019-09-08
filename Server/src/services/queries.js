@@ -11,7 +11,8 @@ const users = {
   findByid: `SELECT * FROM users WHERE id=$1`,
   userToMentor: `UPDATE users SET isMentor=$1 WHERE id=$2 RETURNING *`,
   isAdmin: `SELECT isadmin FROM users WHERE isadmin='true'`,
-  findAllMentors: `SELECT firstname, lastname, email, address, bio, occupation, expertise, isMentor, isAdmin FROM users WHERE isMentor='true'`
+  findAllMentors: `SELECT firstname, lastname, email, address, bio, occupation, expertise, isMentor, isAdmin FROM users WHERE isMentor='true'`,
+  findOneMentor: `SELECT * FROM users WHERE isMentor='true' AND id=$1`
 };
 
 
