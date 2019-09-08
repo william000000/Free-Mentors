@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/william000000/Free-Mentors.svg?branch=develop)](https://travis-ci.org/william000000/Free-Mentors)
 [![Coverage Status](https://coveralls.io/repos/github/william000000/Free-Mentors/badge.svg?branch=develop)](https://coveralls.io/github/william000000/Free-Mentors?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v2/badges/8ee023386df711ab3b1b/maintainability)](https://codeclimate.com/github/william000000/Free-Mentors/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8ee023386df711ab3b1b/maintainability)](https://codeclimate.com/github/william000000/Free-Mentors/maintainability)
 
 # Free-Mentors
 
