@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm run drop && npm run create && nyc --report=text mocha --require @babel/register --require @babel/polyfill Server/src/tests/*.js --exit",
+    "test": " NODE_ENV=test npm run drop && NODE_ENV=test npm run create &&NODE_ENV=test nyc --report=text mocha --require @babel/register --require @babel/polyfill Server/src/tests/*.js --exit",
     "dev": "nodemon --exec babel-node Server/src/app.js",
-    "start": "npm run create && babel-node Server/src/app.js",
+    "start": "babel-node Server/src/app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "create": "babel-node Server/src/services/tables.js",
     "drop": "babel-node Server/src/services/drop.js"

@@ -30,6 +30,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
 
   it("User should not be able to signup when invalid firstname", (done) => {
@@ -98,6 +99,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
   it("User should not be able to signup when user already exist from mentor", (done) => {
     chai.request(app).post("/api/v2/auth/signup").send({
@@ -114,6 +116,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
 
   it("User should not be able to signup when invalid password", (done) => {
@@ -226,6 +229,7 @@ describe("Authentication tests", () => {
       res.should.have.status(200);
       done();
     });
+
   });
   it("User should be able to login when valid data as mentor", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
@@ -235,6 +239,7 @@ describe("Authentication tests", () => {
       res.should.have.status(200);
       done();
     });
+
   });
 
   it("User should not be able to login when invalid email", (done) => {
@@ -257,6 +262,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
 
   it("User should not be able to login when invalid password", (done) => {
@@ -268,6 +274,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
 
   it("User should not be able to login when invalid password", (done) => {
@@ -279,6 +286,7 @@ describe("Authentication tests", () => {
       res.body.should.be.an("object");
       done();
     });
+
   });
   it("User should not be able to login when no password", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
