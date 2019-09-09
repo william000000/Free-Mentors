@@ -85,8 +85,7 @@ CREATE TABLE IF NOT EXISTS reviews(
 
     for (const datas of dummyData) {
       await pool.query(datas);
-      console.log('dumy');
-      
+      console.log('dumy');   
     }
   }
 };

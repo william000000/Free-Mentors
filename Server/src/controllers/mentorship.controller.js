@@ -1,6 +1,9 @@
 import mentors from '../models/mentor.model';
 import session from '../models/mentorship.model';
 import review from '../models/review.model';
+
+import executor from '../services/config';
+import myQuery from '../services/queries';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -10,7 +13,7 @@ class MentorShipController {
   * @param {object} req
   * @param {object} res
   */
-  static createMentorship(req, res) {
+  static async createMentorship(req, res) {
     const mentee = req.user;
     const isMentorExist = mentors.find(m => m.mentorId === parseInt(req.body.mentorId));
     const isMentorshipExist = session.find(m => m.mentorId === parseInt(req.body.mentorId) && m.questions === req.body.questions && mentee.userId === m.menteeId);
