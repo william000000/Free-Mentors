@@ -11,16 +11,11 @@ class ValidationReview {
   */
   static validateReview(req, res, next) {
     try {
-    
       if (!score.test(req.body.score)) throw new Error('invalid score');
       if (!remark.test(req.body.remark)) throw new Error('invalid remark');
-
       next();
     } catch (err) {
-      res.status(400).json({
-        status: 400,
-        error: err.message
-      });
+      res.status(400).json({ status: 400, error: err.message });
     }
   }
   /**
@@ -33,13 +28,9 @@ class ValidationReview {
     try {
       req.body.reason = req.body.reason.trim();
       if (!reason.test(req.body.reason)) throw new Error('invalid reason');
-
       next();
     } catch (err) {
-      res.status(400).json({
-        status: 400,
-        error: err.message
-      });
+      res.status(400).json({ status: 400, error: err.message });
     }
   }
 }

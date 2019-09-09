@@ -47,7 +47,16 @@ describe("Mentors tests", () => {
         done();
       });
   });
-
+  it("should not be able to view mentor when params is not integer ", (done) => {
+    const userId = 'fvv';
+    chai.request(app).get(`/api/v2/mentors/${userId}`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ3aWxseXlAZ21haWwuY29tIiwiaXNBZG1pbiI6ImZhbHNlIiwiaXNNZW50b3IiOiJmYWxzZSIsImlhdCI6MTU2Nzk0MzUyMH0.EvQ2n7JifsWaFrI76FPec3kEjcdLf3FK6a5CgEOWU68')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
   it("should be not able to view a mentor when invalid token ", (done) => {
     const mentorId = 1;
     chai.request(app).get(`/api/v2/mentors/${mentorId}`)
