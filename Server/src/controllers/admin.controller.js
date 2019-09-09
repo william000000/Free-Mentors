@@ -20,12 +20,11 @@ class AdminController {
         });
       }
       if (findUser[0].isadmin === 'true') {
-        return res.status(403).json({
-          status: 403,
-          error: 'Admin not allowed to be a mentor!'
-        });
+        return res.status(403).json({ status: 403, error: 'Admin can not be a mentor!'});
       }
-
+      if(findUser[0].ismentor === 'true'){
+        return res.status(409).json({ status: 409, error: 'User is currently a mentor!'});
+      }
       let isMentor = 'true';
       const updateUser = await executor(myQuery.users.userToMentor, [isMentor, req.params.userId]);
       return res.status(200).json({
@@ -33,7 +32,7 @@ class AdminController {
         data: { message: "User Account changed to mentor successfully" }
       });
     } catch (err) {
-      return res.status(400).json(err.message);
+      return res.status(400).json({status: 400, error: err.message});
     }
   }
 }
