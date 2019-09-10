@@ -61,8 +61,7 @@ class UserController {
         isMentor: isUserExist[0].ismentor
       }, process.env.secretKey);
       res.status(200).json({
-        status: 200, message: "User is succefully logged in", data: { token }
-      });
+        status: 200, message: "User is succefully logged in", data: token });
 
     } catch (err) {
       return res.status(400).json({ status: 400, error: err.message });

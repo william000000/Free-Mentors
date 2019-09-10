@@ -80,13 +80,9 @@ CREATE TABLE IF NOT EXISTS reviews(
   await pool.query(createMentorships);
   await pool.query(createReviews);
 
-
   if (process.env.NODE_ENV === 'test') {
-
     for (const datas of dummyData) {
       await pool.query(datas);
-      console.log('dumy');
-      
     }
   }
 };

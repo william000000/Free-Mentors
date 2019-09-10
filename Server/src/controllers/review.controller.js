@@ -24,8 +24,6 @@ class ReviewController {
         error: 'this mentorship session not exist'
       });
     }
-
-
     if (isMentee) {
       if (isMenteeWhoReq.sessionId !== parseInt(sessionId) || isMenteeWhoReq.status !== 'accepted') {
         return res.status(403).json({
@@ -44,9 +42,9 @@ class ReviewController {
         review.push(newReview);
         return res.status(200).json({
           status: 200,
+          message: "Review a mentor succefully done",
           data: newReview
         });
-
       }
     } else {
       return res.status(403).json({

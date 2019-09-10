@@ -10,11 +10,79 @@ describe("Authentication tests", () => {
 
   it("Any route to my app ", (done) => {
     chai.request(app).get("/").end((err, res) => {
-      res.should.have.status(200);
+      res.should.have.status(404);
       done();
     });
   });
 
+  it("User should not be able to signup when data are valid when method is get ", (done) => {
+    chai.request(app).get("/api/v2/auth/signup").send({
+      firstname: 'willy',
+      lastname: 'willo',
+      email: 'siu@gmail.com',
+      password: 'Rwanda1!1!',
+      address: 'Kigali',
+      bio: 'something',
+      occupation: 'nurse',
+      expertise: 'nurse'
+    }).end((err, res) => {
+      res.should.have.status(405);
+      res.body.should.be.an("object");
+      done();
+    });
+
+  });
+  it("User should not be able to signup when data are valid when method is delete ", (done) => {
+    chai.request(app).delete("/api/v2/auth/signup").send({
+      firstname: 'willy',
+      lastname: 'willo',
+      email: 'siu@gmail.com',
+      password: 'Rwanda1!1!',
+      address: 'Kigali',
+      bio: 'something',
+      occupation: 'nurse',
+      expertise: 'nurse'
+    }).end((err, res) => {
+      res.should.have.status(405);
+      res.body.should.be.an("object");
+      done();
+    });
+
+  });
+  it("User should not be able to signup when data are valid when method is patch ", (done) => {
+    chai.request(app).patch("/api/v2/auth/signup").send({
+      firstname: 'willy',
+      lastname: 'willo',
+      email: 'siu@gmail.com',
+      password: 'Rwanda1!1!',
+      address: 'Kigali',
+      bio: 'something',
+      occupation: 'nurse',
+      expertise: 'nurse'
+    }).end((err, res) => {
+      res.should.have.status(405);
+      res.body.should.be.an("object");
+      done();
+    });
+
+  });
+  it("User should not be able to signup when data are valid when method is patch ", (done) => {
+    chai.request(app).put("/api/v2/auth/signup").send({
+      firstname: 'willy',
+      lastname: 'willo',
+      email: 'siu@gmail.com',
+      password: 'Rwanda1!1!',
+      address: 'Kigali',
+      bio: 'something',
+      occupation: 'nurse',
+      expertise: 'nurse'
+    }).end((err, res) => {
+      res.should.have.status(405);
+      res.body.should.be.an("object");
+      done();
+    });
+
+  });
   it("User should be able to signup when data are valid ", (done) => {
     chai.request(app).post("/api/v2/auth/signup").send({
       firstname: 'willy',
@@ -32,6 +100,7 @@ describe("Authentication tests", () => {
     });
 
   });
+
 
   it("User should not be able to signup when invalid firstname", (done) => {
     chai.request(app).post("/api/v2/auth/signup").send({
@@ -242,6 +311,47 @@ describe("Authentication tests", () => {
 
   });
 
+  it("User should not be able to login when valid data when method is get", (done) => {
+    chai.request(app).get("/api/v2/auth/signin").send({
+      email: 'willy@gmail.com',
+      password: 'Rwanda1!',
+    }).end((err, res) => {
+      res.should.have.status(405);
+      done();
+    });
+
+  });
+
+  it("User should not be able to login when valid data when method is delete", (done) => {
+    chai.request(app).delete("/api/v2/auth/signin").send({
+      email: 'willy@gmail.com',
+      password: 'Rwanda1!',
+    }).end((err, res) => {
+      res.should.have.status(405);
+      done();
+    });
+
+  });
+  it("User should not be able to login when valid data when method is patch", (done) => {
+    chai.request(app).patch("/api/v2/auth/signin").send({
+      email: 'willy@gmail.com',
+      password: 'Rwanda1!',
+    }).end((err, res) => {
+      res.should.have.status(405);
+      done();
+    });
+
+  });
+  it("User should not be able to login when valid data when method is put", (done) => {
+    chai.request(app).put("/api/v2/auth/signin").send({
+      email: 'willy@gmail.com',
+      password: 'Rwanda1!',
+    }).end((err, res) => {
+      res.should.have.status(405);
+      done();
+    });
+
+  });
   it("User should not be able to login when invalid email", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy',

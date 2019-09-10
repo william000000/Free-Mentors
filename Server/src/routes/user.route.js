@@ -4,8 +4,17 @@ import userValidations from '../helpers/userValidation';
 
 const router = express.Router();
 
-const { validateSignup , validateSignin } = userValidations;
+const { validateSignup, validateSignin } = userValidations;
+const methodNotCorrect = (req, res) => {
+  res.status(405).json({ status: 405, error: 'Method is Incorrect' });
+};
 
-router.post('/signup', validateSignup, userController.signup);
-router.post('/signin', validateSignin ,userController.signin);
+router.route('/signup')
+  .post(validateSignup, userController.signup)
+  .all(methodNotCorrect);
+
+router.route('/signin')
+  .post(validateSignin, userController.signin)
+  .all(methodNotCorrect);
+
 export default router;
