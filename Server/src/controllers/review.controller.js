@@ -12,31 +12,34 @@ class ReviewController {
   * @param {object} res
   */
   static reviewMentor(req, res) {
-    const isMentorshipSession = session.filter(s => s.sessionId == parseInt(req.params.sessionId));
-    const isMentee = users.find(z => z.userId === parseInt(req.user.userId));
+    const { sessionId } = req.params;
 
-    const isMenteeWhoReq = session.filter(s => s.menteeId === parseInt(req.user.userId) && s.status === 'accepted');
+    const isMentorshipSession = session.find(s => s.sessionId == parseInt(sessionId)); const isMentee = users.find(z => z.email === req.user.email);
+    const isMenteeWhoReq = session.find(s => s.menteeEmail === req.user.email);
+    const { remark, score } = req.body;
 
-    if (isMentorshipSession.length == 0) {
+    if (!isMentorshipSession) {
       return res.status(404).json({
         status: 404,
         error: 'this mentorship session not exist'
       });
     }
+
+
     if (isMentee) {
-      if (isMenteeWhoReq[0].sessionId !== parseInt(req.params.sessionId)) {
+      if (isMenteeWhoReq.sessionId !== parseInt(sessionId) || isMenteeWhoReq.status !== 'accepted') {
         return res.status(403).json({
           status: 403,
-          error: "You did not requested this mentorship! "
+          error: "You did not requested this mentorship or not accepted already! "
         });
       } else {
         const newReview = {
-          sessionId: isMenteeWhoReq[0].sessionId,
-          mentorId: isMenteeWhoReq[0].mentorId,
-          menteeId: isMenteeWhoReq[0].menteeId,
-          score: req.body.score,
+          sessionId: isMenteeWhoReq.sessionId,
+          mentorId: isMenteeWhoReq.mentorId,
+          menteeId: isMenteeWhoReq.menteeId,
+          score: score,
           menteeFullName: isMentee.firstName + ' ' + isMentee.lastName,
-          remark: req.body.remark
+          remark: remark
         };
         review.push(newReview);
         return res.status(200).json({
@@ -61,9 +64,10 @@ class ReviewController {
    */
   static deleteReview(req, res) {
     const loggedInChecker = req.user.isAdmin;
-    const isReview = review.find(s => s.sessionId == parseInt(req.params.sessionId));
+    const { sessionId } = req.params;
+    const isReview = review.find(s => s.sessionId == parseInt(sessionId));
     const isAdmin = users.find(z => z.isAdmin === true && req.user.isAdmin === true);
-
+    const { reason } = req.body;
     if (!isAdmin)
       return res.status(403).json({
         status: 403,
@@ -77,7 +81,8 @@ class ReviewController {
     review.splice(review.indexOf(isReview), 1);
     return res.status(200).json({
       status: 200,
-      message: 'Review deleted successfully'
+      message: 'Review deleted successfully',
+      data: { reason }
     });
   }
 }

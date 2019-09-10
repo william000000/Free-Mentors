@@ -36,21 +36,29 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 
 ## Run the server
 ```
-& npm run dev
+> npm run dev
 ```
 ## Run the test
 
 ```
-& npm test
+> npm test
 ```
 
 ## API Endpoints
 
 | Request Url | Methods  | Description  |
 | ------- | --- | --- |
-| /api/v1/auth/signup | POST | Create user account |
-| /api/v1/auth/signin | POST | User Login  |
-
+| /api/v2/auth/signup | POST | Create user account |
+| /api/v2/auth/signin | POST | User Login  |
+| /api/v2/user/:id | PATCH | Admin Change User to Mentor |
+| /api/v2/mentors | GET | Get all Mentors |
+| /api/v2/mentor/:id | GET | Get specific Mentor |
+| /api/v2/sessions | POST | Create Mentorship sessions |
+| /api/v2/sessions/:id/accept | PATCH | Mentor Accept Session |
+| /api/v2/sessions/:id/reject | PATCH | Mentor Reject Session |
+| /api/v2/sessions  | GET | Get all mentorship against mentor or Mentee |
+| /api/v2/sessions/:sessionId/review | POST | Review a Mentor after Mentorship |
+| /api/v2/sessions/:sessionId/review | DELETE | Delete inappropriate review |
 
 
 
@@ -75,6 +83,8 @@ Make sure you have cloned this repo to your local machine, and after then run `c
 ```
 Heroku
 ```
+### API Documentation
+[Documentation](https://freementors.herokuapp.com/apiDocumentation)
 ### Pivotal Tracker Stories 
 [Project Stories](https://www.pivotaltracker.com/n/projects/2379756)
 ### Heroku link
