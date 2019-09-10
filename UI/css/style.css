@@ -135,8 +135,8 @@ nav ul li a:hover{
   background: white;
   width: 100%;
   max-width: 830px;
-  height: 100%;
-  max-height: 300px;
+  min-height: 25vh;
+ 
   margin: 0 auto;
   border-radius: 10px;
   z-index: -1;
@@ -203,6 +203,10 @@ nav ul li a:hover{
   text-shadow: 1px 1px white;
   font-size: 35px;
 }
+.forgetCode{
+  display: block;
+  margin: 0 180px;
+}
 .forgetCode a{
   color: rgba(2, 26, 105, 0.904);
   font-size: 14px;
@@ -213,7 +217,8 @@ nav ul li a:hover{
 }
 .forgetCode h3, .forgetCode p{ 
   font-size: 15px;
-  margin-top: 20px;
+  margin-top:10px;
+  padding-bottom: 15px;
 }
 
 /*All about Responsiveness of my app------------------*/
@@ -565,8 +570,6 @@ nav ul li a:hover{
   background: white;
   width: 100%;
   max-width: 830px;
-  height: 100%;
-  max-height: 800px;
   margin: 0 auto;
   border-radius: 10px;
 }
@@ -783,9 +786,12 @@ footer p{
   color: white;
   text-align: center;
   background: rgb(14, 17, 34);
-  padding: 20px 0;
+  padding: 12px 0;
   margin-top: 10px;
   
+}
+.space{
+  min-height: 20vh;
 }
 body::after{
   content: '';
@@ -793,17 +799,18 @@ body::after{
   height: 50px;
 }
 footer{
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  height: 50px;
-}
- #footer{
   position: fixed;
   width: 100%;
   bottom: 0;
   height: 50px;
 }
+.footer{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+}
+
 /*Footer Ends -------------*/
 
 /*view specific mentor*/
