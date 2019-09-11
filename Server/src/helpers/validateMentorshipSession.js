@@ -10,16 +10,11 @@ class ValidationSessionRequest {
   */
   static validateRequest(req, res, next) {
     try {
-
       if (!mentorId.test(req.body.mentorId)) throw new Error('invalid mentorId');
       if (!questions.test(req.body.questions)) throw new Error('invalid questions');
-
       next();
     } catch (err) {
-      res.status(400).json({
-        status: 400,
-        error: err.message
-      });
+      res.status(400).json({ status: 400, error: err.message });
     }
   }
 }

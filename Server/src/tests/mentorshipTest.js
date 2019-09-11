@@ -8,34 +8,48 @@ chai.should();
 
 describe("MentorShip Session Request tests", () => {
 
-
-  it("should be able to create mentorship session when all data is valid ", (done) => {
-    chai.request(app).post(`/api/v2/sessions`)
+  it("should not be able to create mentorship session when all data is valid when method is delete ", (done) => {
+    chai.request(app).delete(`/api/v2/sessions`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
       .send({
         mentorId: 1,
         questions: "jsgdsjgsd"
       })
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(405);
         res.body.should.be.an("object");
         done();
       });
   });
 
-  it("should not be able to create mentorship session when its done twice", (done) => {
-    chai.request(app).post(`/api/v2/sessions`)
+  it("should not be able to create mentorship session when all data is valid when method is patch ", (done) => {
+    chai.request(app).patch(`/api/v2/sessions`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
       .send({
         mentorId: 1,
         questions: "jsgdsjgsd"
       })
       .end((err, res) => {
-        res.should.have.status(409);
+        res.should.have.status(405);
         res.body.should.be.an("object");
         done();
       });
   });
+
+  it("should not be able to create mentorship session when all data is valid when method is put ", (done) => {
+    chai.request(app).put(`/api/v2/sessions`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .send({
+        mentorId: 1,
+        questions: "jsgdsjgsd"
+      })
+      .end((err, res) => {
+        res.should.have.status(405);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+
 
   it("should not be able to create mentorship session when no mentorId", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
@@ -51,7 +65,7 @@ describe("MentorShip Session Request tests", () => {
       });
   });
 
-  it("should be able to create mentorship session when no questions ", (done) => {
+  it("should not be able to create mentorship session when no questions ", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
       .send({
@@ -128,10 +142,19 @@ describe("MentorShip Session Request tests", () => {
   });
 
   it("should not be able to accept mentorship session request when session not given ", (done) => {
-    chai.request(app).patch(`/api/v2/sessions/${0}/accept`)
+    chai.request(app).patch(`/api/v2/sessions/${100000}/accept`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
       .end((err, res) => {
         res.should.have.status(404);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+  it("should not be able to accept mentorship session request when session id is 0 ", (done) => {
+    chai.request(app).patch(`/api/v2/sessions/${0}/accept`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(400);
         res.body.should.be.an("object");
         done();
       });
@@ -157,7 +180,7 @@ describe("MentorShip Session Request tests", () => {
         done();
       });
   });
-  
+
   it("should be not able to reject mentorship session request when it is already rejected ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${3}/reject`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldkBnbWFpbC5jb20iLCJpYXQiOjE1NjY0MzA0ODgsImV4cCI6MTU2ODg0OTY4OH0.GVOM_4aRHSbgyoRTtqLRiSx21Mu2mH0odXNdB0om8Ko')
@@ -167,9 +190,18 @@ describe("MentorShip Session Request tests", () => {
         done();
       });
   });
-  
-  it("should not be able to reject mentorship session request when session not given ", (done) => {
+
+  it("should not be able to reject mentorship session request when session id is zero", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${0}/reject`)
+      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.an("object");
+        done();
+      });
+  });
+  it("should not be able to reject mentorship session request when no found", (done) => {
+    chai.request(app).patch(`/api/v2/sessions/${100000}/reject`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
       .end((err, res) => {
         res.should.have.status(404);
@@ -177,7 +209,7 @@ describe("MentorShip Session Request tests", () => {
         done();
       });
   });
-  
+
   it("should not be able to reject mentorship session request when he is not a mentor of that request ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${1}/reject`)
       .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')

@@ -35,6 +35,7 @@ class MentorShipController {
           });
         }
         const newSession = await executor(myQuery.mentorships.createMentorship, [mentorId, isMentorExist[0].email, mentee.id, questions, mentee.email]);
+        
         return res.status(200).json({
           status: 200,
           message: "mentorship successfully created",
