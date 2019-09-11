@@ -1,9 +1,8 @@
 import mentors from '../models/mentor.model';
 import session from '../models/mentorship.model';
 import review from '../models/review.model';
-
-import executor from '../services/config';
 import myQuery from '../services/queries';
+import executor from '../services/config';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -14,43 +13,42 @@ class MentorShipController {
   * @param {object} res
   */
   static async createMentorship(req, res) {
-    const mentee = req.user;
-    const isMentorExist = mentors.find(m => m.mentorId === parseInt(req.body.mentorId));
-    const isMentorshipExist = session.find(m => m.mentorId === parseInt(req.body.mentorId) && m.questions === req.body.questions && mentee.userId === m.menteeId);
+    try {
+      const mentee = req.user;
+      const { questions, mentorId } = req.body;
+      const isMentorExist = await executor(myQuery.users.isMentorExist, [mentorId]);
 
-    if (mentee.isAdmin == true) {
-      return res.status(403).json({
-        status: 403,
-        error: "Admin not allowed to request session"
-      });
-    }
+      const isMentorshipExist = await executor(myQuery.mentorships.isMentorshipExist, [mentorId, questions, mentee.id]);
 
-    if (isMentorExist) {
-      if (isMentorshipExist) {
-        return res.status(409).json({
-          status: 409,
-          error: 'Session already requested with this mentor'
+      if (mentee.isAdmin == true) {
+        return res.status(403).json({
+          status: 403,
+          error: "Admin not allowed to request session"
         });
       }
-      let newSession = {
-        sessionId: session.length + 1,
-        mentorId: isMentorExist.mentorId,
-        mentorEmail: isMentorExist.email,
-        menteeId: mentee.userId,
-        questions: req.body.questions,
-        menteeEmail: mentee.email,
-        status: 'pending'
-      };
-      session.push(newSession);
-      return res.status(200).json({
-        status: 200,
-        data: newSession
+
+      if (isMentorExist[0]) {
+        if (isMentorshipExist[0]) {
+          return res.status(409).json({
+            status: 409,
+            error: 'Session already requested with this mentor'
+          });
+        }
+        const newSession = await executor(myQuery.mentorships.createMentorship, [mentorId, isMentorExist[0].email, mentee.id, questions, mentee.email]);
+        return res.status(200).json({
+          status: 200,
+          message: "mentorship successfully created",
+          data: newSession
+        });
+      }
+      return res.status(404).json({
+        status: 404,
+        error: 'Mentor not found'
       });
+
+    } catch (err) {
+      return res.status(400).json({ status: 400, error: err.message });
     }
-    return res.status(404).json({
-      status: 404,
-      error: 'Mentor not found'
-    });
 
   }
 
@@ -83,6 +81,7 @@ class MentorShipController {
           });
           return res.status(200).json({
             status: 200,
+            message: "accepted successfully",
             data: result
           });
         }
@@ -123,6 +122,7 @@ class MentorShipController {
           });
           return res.status(200).json({
             status: 200,
+            message: "Rejected successful",
             data: result
           });
         }
@@ -142,7 +142,7 @@ class MentorShipController {
     const whoLoggedIn = req.user.email;
     const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
 
-    if (Sessions.length > 0) { return res.status(200).json({ status: 200, data: Sessions }); }
+    if (Sessions.length > 0) { return res.status(200).json({ status: 200, message: "retrieved successfully", data: Sessions }); }
     return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
   }
 }

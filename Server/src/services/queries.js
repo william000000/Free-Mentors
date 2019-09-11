@@ -16,7 +16,8 @@ const users = {
   isMentorExist: `SELECT * FROM users WHERE id=$1 and isMentor='true'`
 };
 const mentorships = {
-  isMentorshipExist: `SELECT * FROM mentorships WHERE id=$1 and `
+  isMentorshipExist: `SELECT * FROM mentorships WHERE  mentorId=$1 and questions=$2 and menteeId=$3`,
+  createMentorship: `INSERT INTO mentorships(mentorId, mentorEmail, menteeId, questions, menteeEmail) VALUES($1,$2,$3,$4,$5) RETURNING *`
 
 };
 
