@@ -17,122 +17,50 @@ class MentorShipController {
       const mentee = req.user;
       const { questions, mentorId } = req.body;
       const isMentorExist = await executor(myQuery.users.isMentorExist, [mentorId]);
-
       const isMentorshipExist = await executor(myQuery.mentorships.isMentorshipExist, [mentorId, questions, mentee.id]);
 
-      if (mentee.isAdmin == true) {
-        return res.status(403).json({
-          status: 403,
-          error: "Admin not allowed to request session"
-        });
-      }
-
-      if (isMentorExist[0]) {
-        if (isMentorshipExist[0]) {
-          return res.status(409).json({
-            status: 409,
-            error: 'Session already requested with this mentor'
-          });
-        }
-        const newSession = await executor(myQuery.mentorships.createMentorship, [mentorId, isMentorExist[0].email, mentee.id, questions, mentee.email]);
-        
-        return res.status(200).json({
-          status: 200,
-          message: "mentorship successfully created",
-          data: newSession
-        });
-      }
-      return res.status(404).json({
-        status: 404,
-        error: 'Mentor not found'
-      });
-
+      const newSession = await executor(myQuery.mentorships.createMentorship, [mentorId, isMentorExist[0].email, mentee.id, questions, mentee.email]);
+      return res.status(200).json({ status: 200, message: "mentorship successfully created", data: newSession });
     } catch (err) {
       return res.status(400).json({ status: 400, error: err.message });
     }
-
   }
-
   /**
   * Accept mentorship session request
   * @param {object} req
   * @param {object} res
   */
-  static acceptMentorshipRequest(req, res) {
-    const getMentor = req.user.email;
-    let taker = session;
-    const isSessionRequested = taker.find(s => s.sessionId == parseInt(req.params.sessionId));
-    taker = new Array(isSessionRequested);
-    if (isSessionRequested) {
-      if (getMentor !== isSessionRequested.mentorEmail) {
-        return res.status(403).json({
-          status: 403,
-          error: 'Sorry, you are not allowed to accept this request'
-        });
-      } else {
-        if (isSessionRequested.status === 'accepted') {
-          return res.status(400).json({
-            status: 400,
-            error: 'Session Already accepted'
-          });
-        } else {
-          const result = taker.map(s => {
-            s.status = 'accepted';
-            return s;
-          });
-          return res.status(200).json({
-            status: 200,
-            message: "accepted successfully",
-            data: result
-          });
-        }
+  static async acceptMentorshipRequest(req, res) {
+    try {
+      const { sessionId } = req.params;
+      const isSessionRequested = await executor(myQuery.mentorships.isSessionRequested, [sessionId]);
+      if (isSessionRequested[0].status === 'accepted') {
+        return res.status(409).json({ status: 409, error: 'Session Already accepted' });
       }
-    }
-    return res.status(404).json({
-      status: 404,
-      error: "Session not found"
-    });
+      const result = await executor(myQuery.mentorships.acceptSession, [sessionId]);
+      return res.status(200).json({ status: 200, message: "accepted successfully", data: result[0] });
 
+    } catch (err) {
+      return res.status(400).json({ status: 400, error: err.message });
+    }
   }
   /**
   * Reject mentorship session request
   * @param {object} req
   * @param {object} res
   */
-  static rejectMentorshipRequest(req, res) {
-    const getMentor = req.user.email;
-    let taker = session;
-    const isSessionRequested = taker.find(s => s.sessionId == parseInt(req.params.sessionId));
-    taker = new Array(isSessionRequested);
-    if (isSessionRequested) {
-      if (getMentor !== isSessionRequested.mentorEmail) {
-        return res.status(403).json({
-          status: 403,
-          error: 'Sorry, you are not allowed to reject this request'
-        });
-      } else {
-        if (isSessionRequested.status === 'rejected') {
-          return res.status(400).json({
-            status: 400,
-            error: 'Session Already rejected'
-          });
-        } else {
-          const result = taker.map(s => {
-            s.status = 'rejected';
-            return s;
-          });
-          return res.status(200).json({
-            status: 200,
-            message: "Rejected successful",
-            data: result
-          });
-        }
+  static async rejectMentorshipRequest(req, res) {
+    try {
+      const { sessionId } = req.params;
+      const isSessionRequested = await executor(myQuery.mentorships.isSessionRequested, [sessionId]);
+      if (isSessionRequested[0].status === 'rejected') {
+        return res.status(409).json({ status: 409, error: 'Session Already rejected' });
       }
+      const result = await executor(myQuery.mentorships.rejectSession, [sessionId]);
+      return res.status(200).json({ status: 200, message: "rejected successfully", data: result[0] });
+    } catch (err) {
+      return res.status(400).json({ status: 400, error: err.message });
     }
-    return res.status(404).json({
-      status: 404,
-      error: "Session not found"
-    });
   }
   /**
   * View all mentorship session request upon(Mentee and Mentor)
@@ -142,7 +70,6 @@ class MentorShipController {
   static viewAllMentorshipSessionRequest(req, res) {
     const whoLoggedIn = req.user.email;
     const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
-
     if (Sessions.length > 0) { return res.status(200).json({ status: 200, message: "retrieved successfully", data: Sessions }); }
     return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
   }

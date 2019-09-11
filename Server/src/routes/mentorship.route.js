@@ -3,6 +3,8 @@ import mentorShipController from '../controllers/mentorship.controller';
 import userAuth from '../middleware/authUser';
 import validateSession from '../helpers/validateMentorshipSession';
 import validateRoute from '../helpers/validateRoutes';
+import reactToSession from '../middleware/checkSession';
+import createMentorship from '../middleware/createSession';
 const router = express.Router();
 
 const { validateRequest } = validateSession;
@@ -13,15 +15,15 @@ const methodNotCorrect = (req, res) => {
 
 router.route('/')
   .get(userAuth, mentorShipController.viewAllMentorshipSessionRequest)
-  .post(validateRequest, userAuth, mentorShipController.createMentorship)
+  .post(validateRequest, userAuth,createMentorship, mentorShipController.createMentorship)
   .all(methodNotCorrect);
 
 router.route('/:sessionId/accept')
-  .patch(userAuth, validatePath, mentorShipController.acceptMentorshipRequest)
+  .patch(userAuth, validatePath,reactToSession, mentorShipController.acceptMentorshipRequest)
   .all(methodNotCorrect);
 
 router.route('/:sessionId/reject')
-  .patch(userAuth, validatePath, mentorShipController.rejectMentorshipRequest)
+  .patch(userAuth, validatePath,reactToSession, mentorShipController.rejectMentorshipRequest)
   .all(methodNotCorrect);
 
 export default router;

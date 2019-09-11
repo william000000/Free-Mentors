@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../app";
+import mockdata from "../mockdata/tokens";
 chai.use(chaiHttp);
 chai.should();
 
@@ -10,7 +11,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when all data is valid when method is delete ", (done) => {
     chai.request(app).delete(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth',mockdata.user1)
       .send({
         mentorId: 1,
         questions: "jsgdsjgsd"
@@ -24,7 +25,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when all data is valid when method is patch ", (done) => {
     chai.request(app).patch(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth', mockdata.user1)
       .send({
         mentorId: 1,
         questions: "jsgdsjgsd"
@@ -38,7 +39,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when all data is valid when method is put ", (done) => {
     chai.request(app).put(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth',mockdata.user1)
       .send({
         mentorId: 1,
         questions: "jsgdsjgsd"
@@ -53,7 +54,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when no mentorId", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth', mockdata.user1)
       .send({
         mentorId: '',
         questions: "jsgdsjgsd"
@@ -67,7 +68,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when no questions ", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth', mockdata.user1)
       .send({
         mentorId: 1,
         questions: ""
@@ -81,7 +82,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when token is invalid ", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', 'JhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth', mockdata.invalidToken)
       .send({
         mentorId: 1,
         questions: "What is hshs?"
@@ -95,7 +96,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when mentor not found ", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjMyMTQ0MywiZXhwIjoxNTY4NzQwNjQzfQ.ahcHqLQFrMHcEbIyrXLNOdaQRcOoIFSxsfiUtPQ6teA')
+      .set('auth', mockdata.user1)
       .send({
         mentorId: 0,
         questions: "hhfddfdfxdx"
@@ -109,7 +110,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to create mentorship session when he is admin ", (done) => {
     chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+      .set('auth', mockdata.adminUser2)
       .send({
         mentorId: 1,
         questions: "vhvhvhvhvhvh"
@@ -123,7 +124,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be able to accept mentorship session request when all data is valid ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${1}/accept`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth', mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an("object");
@@ -133,9 +134,9 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be not able to accept mentorship session request when it is already accepted ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${2}/accept`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldkBnbWFpbC5jb20iLCJpYXQiOjE1NjY0MzA0ODgsImV4cCI6MTU2ODg0OTY4OH0.GVOM_4aRHSbgyoRTtqLRiSx21Mu2mH0odXNdB0om8Ko')
+      .set('auth',mockdata.mentorUser5)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(409);
         res.body.should.be.an("object");
         done();
       });
@@ -143,7 +144,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to accept mentorship session request when session not given ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${100000}/accept`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth',mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an("object");
@@ -152,7 +153,7 @@ describe("MentorShip Session Request tests", () => {
   });
   it("should not be able to accept mentorship session request when session id is 0 ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${0}/accept`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth', mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.an("object");
@@ -162,7 +163,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to accept mentorship session request when he is not a mentor of that request ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${1}/accept`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+      .set('auth', mockdata.mentorUser5)
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.be.an("object");
@@ -173,7 +174,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be able to reject mentorship session request when all data is valid ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${1}/reject`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth', mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an("object");
@@ -183,9 +184,9 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be not able to reject mentorship session request when it is already rejected ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${3}/reject`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldkBnbWFpbC5jb20iLCJpYXQiOjE1NjY0MzA0ODgsImV4cCI6MTU2ODg0OTY4OH0.GVOM_4aRHSbgyoRTtqLRiSx21Mu2mH0odXNdB0om8Ko')
+      .set('auth',mockdata.mentorUser5)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(409);
         res.body.should.be.an("object");
         done();
       });
@@ -193,7 +194,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to reject mentorship session request when session id is zero", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${0}/reject`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth', mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.an("object");
@@ -202,7 +203,7 @@ describe("MentorShip Session Request tests", () => {
   });
   it("should not be able to reject mentorship session request when no found", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${100000}/reject`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndpbHBAZ21haWwuY29tIiwiaWF0IjoxNTY2MzkyMTExLCJleHAiOjE1Njg4MTEzMTF9.zYbFG0R6sig1XzhWbA5i56pLtnXE96RwLO0MXXPOndU')
+      .set('auth', mockdata.mentorUser4)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an("object");
@@ -212,7 +213,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should not be able to reject mentorship session request when he is not a mentor of that request ", (done) => {
     chai.request(app).patch(`/api/v2/sessions/${1}/reject`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjIzNTEzMywiZXhwIjoxNTY4NjU0MzMzfQ.TwpjQovDnBU3axadqjuaLAUDVPWybj1mAMhxeyCy4p0')
+      .set('auth', mockdata.adminUser2)
       .end((err, res) => {
         res.should.have.status(403);
         res.body.should.be.an("object");
@@ -222,7 +223,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be able to view all mentorship session requested ", (done) => {
     chai.request(app).get(`/api/v2/sessions/`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoid2lsbHlAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU2NjQ3ODMwNCwiZXhwIjoxNTY4ODk3NTA0fQ.dOH2n8QG3Ilzwkz_j5RQX6pLBlwevcr4RUVLKZ9qS4Q')
+      .set('auth', mockdata.user1)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.an("object");
@@ -232,7 +233,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be not able to view all mentorship session requested when no session done against user", (done) => {
     chai.request(app).get(`/api/v2/sessions/`)
-      .set('auth', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoiYm9iQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTU2NjQ3ODM4MiwiZXhwIjoxNTY4ODk3NTgyfQ.8fmclpMPqiyNRfZ6KyrwRdBJXdkijj0epGaXxsLS9GE')
+      .set('auth', mockdata.adminUser2)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an("object");
