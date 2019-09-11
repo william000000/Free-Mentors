@@ -80,6 +80,7 @@ class MentorShipController {
           });
           return res.status(200).json({
             status: 200,
+            message: "accepted successfully",
             data: result
           });
         }
@@ -120,6 +121,7 @@ class MentorShipController {
           });
           return res.status(200).json({
             status: 200,
+            message: "Rejected successful",
             data: result
           });
         }
@@ -139,7 +141,7 @@ class MentorShipController {
     const whoLoggedIn = req.user.email;
     const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
 
-    if (Sessions.length > 0) { return res.status(200).json({ status: 200, data: Sessions }); }
+    if (Sessions.length > 0) { return res.status(200).json({ status: 200, message: "retrieved successfully", data: Sessions }); }
     return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
   }
 }

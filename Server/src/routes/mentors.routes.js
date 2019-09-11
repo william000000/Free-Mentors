@@ -5,8 +5,16 @@ import validateRoute from '../helpers/validateRoutes';
 
 const router = express.Router();
 const { validatePath } = validateRoute;
+const methodNotCorrect = (req, res) => {
+  res.status(405).json({ status: 405, error: 'Method is Incorrect' });
+};
 
-router.get('/', userAuth, mentorController.getAllMentor);
-router.get('/:mentorId', userAuth, validatePath, mentorController.getOneMentor);
+router.route('/')
+  .get(userAuth, mentorController.getAllMentor)
+  .all(methodNotCorrect);
+
+router.route('/:mentorId')
+  .get(userAuth, validatePath, mentorController.getOneMentor)
+  .all(methodNotCorrect);
 
 export default router;

@@ -15,22 +15,16 @@ class UserValidations {
   */
   static validateSignup(req, res, next) {
     try {
-      req.body.firstname = req.body.firstname.trim();
-      req.body.lastname = req.body.lastname.trim();
-      req.body.email = req.body.email.trim();
-      req.body.password = req.body.password.trim();
-      req.body.address = req.body.address.trim();
-      req.body.expertise = req.body.expertise.trim();
-      req.body.occupation = req.body.occupation.trim();
-
-      if (!email.test(req.body.email)) throw new Error('invalid email');
-      if (!password.test((req.body.password))) throw new Error('invalid password');
-      if (!names.test(req.body.firstname)) throw new Error('invalid name');
-      if (!names.test(req.body.lastname)) throw new Error('invalid names');
-      if (!address.test(req.body.address)) throw new Error('invalid address');
-      if (!bio.test(req.body.bio)) throw new Error('insert your bio at least more than 5 characters');
-      if (!occupation.test(req.body.occupation)) throw new Error('enter your occupation');
-      if (!expertise.test(req.body.expertise)) throw new Error('enter your expertise');
+  
+       
+      if (!email.test(req.body.email) || !(req.body.email)) throw new Error('insert email, use ex: willy@gmail.com');
+      if (!password.test((req.body.password))|| !(req.body.password)) throw new Error('invalid password, ex: Ethiopia1!');
+      if (!names.test(req.body.firstname)||!(req.body.firstname)) throw new Error('invalid first name');
+      if (!names.test(req.body.lastname) || !(req.body.lastname)) throw new Error('insert valid lastname');
+      if (!address.test(req.body.address) || !(req.body.address)) throw new Error('invalid address');
+      if (!bio.test(req.body.bio) || !(req.body.bio)) throw new Error('insert your bio at least more than 5 characters');
+      if (!occupation.test(req.body.occupation) || !(req.body.occupation)) throw new Error('enter your occupation');
+      if (!expertise.test(req.body.expertise) || !(req.body.expertise)) throw new Error('enter your expertise');
       next();
     } catch (err) {
       res.status(400).json({ status: 400, error: err.message });
@@ -46,8 +40,8 @@ class UserValidations {
     try {
       req.body.email = req.body.email.trim();
       req.body.password = req.body.password.trim();
-      if (!email.test(req.body.email)) throw new Error('invalid email');
-      if (!password.test((req.body.password))) throw new Error('invalid password');
+      if (!email.test(req.body.email)) throw new Error('insert valid email, ex: willy@gmail.com');
+      if (!password.test((req.body.password))) throw new Error('insert valid password');
       next();
     } catch (err) {
       res.status(400).json({ status: 400, error: err.message });

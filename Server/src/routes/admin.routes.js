@@ -5,6 +5,11 @@ import validateRoute from '../helpers/validateRoutes';
 
 const router = express.Router();
 const { validatePath } = validateRoute;
-router.patch('/:userId', checkIsAdmin, validatePath, adminController.changeUserToMentor);
+const methodNotCorrect = (req, res) => {
+  res.status(405).json({ status: 405, error: 'Method is Incorrect' });
+};
+router.route('/:userId')
+  .patch(checkIsAdmin, validatePath, adminController.changeUserToMentor)
+  .all(methodNotCorrect);
 
 export default router;
