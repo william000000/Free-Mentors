@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../app";
+import mockdata from "../mockdata/tokens";
 chai.use(chaiHttp);
 chai.should();
 
@@ -16,16 +17,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should not be able to signup when data are valid when method is get ", (done) => {
-    chai.request(app).get("/api/v2/auth/signup").send({
-      firstname: 'willy',
-      lastname: 'willo',
-      email: 'siu@gmail.com',
-      password: 'Rwanda1!1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).get("/api/v2/auth/signup").send(mockdata.verify1).end((err, res) => {
       res.should.have.status(405);
       res.body.should.be.an("object");
       done();
@@ -33,16 +25,7 @@ describe("Authentication tests", () => {
 
   });
   it("User should not be able to signup when data are valid when method is delete ", (done) => {
-    chai.request(app).delete("/api/v2/auth/signup").send({
-      firstname: 'willy',
-      lastname: 'willo',
-      email: 'siu@gmail.com',
-      password: 'Rwanda1!1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).delete("/api/v2/auth/signup").send(mockdata.verify1).end((err, res) => {
       res.should.have.status(405);
       res.body.should.be.an("object");
       done();
@@ -50,16 +33,7 @@ describe("Authentication tests", () => {
 
   });
   it("User should not be able to signup when data are valid when method is patch ", (done) => {
-    chai.request(app).patch("/api/v2/auth/signup").send({
-      firstname: 'willy',
-      lastname: 'willo',
-      email: 'siu@gmail.com',
-      password: 'Rwanda1!1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).patch("/api/v2/auth/signup").send(mockdata.verify1).end((err, res) => {
       res.should.have.status(405);
       res.body.should.be.an("object");
       done();
@@ -67,16 +41,7 @@ describe("Authentication tests", () => {
 
   });
   it("User should not be able to signup when data are valid when method is patch ", (done) => {
-    chai.request(app).put("/api/v2/auth/signup").send({
-      firstname: 'willy',
-      lastname: 'willo',
-      email: 'siu@gmail.com',
-      password: 'Rwanda1!1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).put("/api/v2/auth/signup").send(mockdata.verify1).end((err, res) => {
       res.should.have.status(405);
       res.body.should.be.an("object");
       done();
@@ -84,16 +49,7 @@ describe("Authentication tests", () => {
 
   });
   it("User should be able to signup when data are valid ", (done) => {
-    chai.request(app).post("/api/v2/auth/signup").send({
-      firstname: 'willy',
-      lastname: 'willo',
-      email: 'siu@gmail.com',
-      password: 'Rwanda1!1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).post("/api/v2/auth/signup").send(mockdata.verifyNewUser).end((err, res) => {
       res.should.have.status(201);
       res.body.should.be.an("object");
       done();
@@ -171,16 +127,7 @@ describe("Authentication tests", () => {
 
   });
   it("User should not be able to signup when user already exist from mentor", (done) => {
-    chai.request(app).post("/api/v2/auth/signup").send({
-      firstname: 'willo',
-      lastname: 'willo',
-      email: 'wilp@gmail.com',
-      password: 'Rwanda1!',
-      address: 'Kigali',
-      bio: 'something',
-      occupation: 'nurse',
-      expertise: 'nurse'
-    }).end((err, res) => {
+    chai.request(app).post("/api/v2/auth/signup").send(mockdata.existUser).end((err, res) => {
       res.should.have.status(409);
       res.body.should.be.an("object");
       done();
@@ -291,10 +238,7 @@ describe("Authentication tests", () => {
   });
 
   it("User should be able to login when valid data", (done) => {
-    chai.request(app).post("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!',
-    }).end((err, res) => {
+    chai.request(app).post("/api/v2/auth/signin").send(mockdata.existUser).end((err, res) => {
       res.should.have.status(200);
       done();
     });
@@ -302,8 +246,8 @@ describe("Authentication tests", () => {
   });
   it("User should be able to login when valid data as mentor", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
-      email: 'wilp@gmail.com',
-      password: 'Rwanda1!',
+      email: mockdata.verify1.email,
+      password: mockdata.existUser.password
     }).end((err, res) => {
       res.should.have.status(200);
       done();
@@ -313,8 +257,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to login when valid data when method is get", (done) => {
     chai.request(app).get("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!',
+      email: mockdata.verify1.email,
+      password: mockdata.verify1.password
     }).end((err, res) => {
       res.should.have.status(405);
       done();
@@ -324,8 +268,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to login when valid data when method is delete", (done) => {
     chai.request(app).delete("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!',
+      email: mockdata.verify1.email,
+      password: mockdata.verify1.password
     }).end((err, res) => {
       res.should.have.status(405);
       done();
@@ -334,8 +278,8 @@ describe("Authentication tests", () => {
   });
   it("User should not be able to login when valid data when method is patch", (done) => {
     chai.request(app).patch("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!',
+      email: mockdata.verify1.email,
+      password: mockdata.verify1.password
     }).end((err, res) => {
       res.should.have.status(405);
       done();
@@ -344,8 +288,8 @@ describe("Authentication tests", () => {
   });
   it("User should not be able to login when valid data when method is put", (done) => {
     chai.request(app).put("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!',
+      email: mockdata.verify1.email,
+      password: mockdata.verify1.password
     }).end((err, res) => {
       res.should.have.status(405);
       done();
@@ -355,7 +299,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when invalid email", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willy',
-      password: 'Rwanda1!',
+      password: mockdata.verify1.password,
     }).end((err, res) => {
       res.should.have.status(400);
       res.body.should.be.an("object");
@@ -366,7 +310,7 @@ describe("Authentication tests", () => {
   it("User should not be able to login when email not exist", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
       email: 'willyfegfgbjfj@gmail.com',
-      password: 'Rwanda1!',
+      password: mockdata.verify1.password
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");
@@ -377,10 +321,10 @@ describe("Authentication tests", () => {
 
   it("User should not be able to login when invalid password", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
-      password: 'Rwanda1!aa',
+      email: mockdata.verify1.email,
+      password: 'Rwaa',
     }).end((err, res) => {
-      res.should.have.status(401);
+      res.should.have.status(400);
       res.body.should.be.an("object");
       done();
     });
@@ -389,8 +333,8 @@ describe("Authentication tests", () => {
 
   it("User should not be able to login when invalid password", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
-      email: 'wilp@gmail.com',
-      password: 'Rwanda1!aahdh',
+      email: mockdata.verify1.email,
+      password: 'Rwanda1!aahhchvcdh',
     }).end((err, res) => {
       res.should.have.status(401);
       res.body.should.be.an("object");
@@ -400,7 +344,7 @@ describe("Authentication tests", () => {
   });
   it("User should not be able to login when no password", (done) => {
     chai.request(app).post("/api/v2/auth/signin").send({
-      email: 'willy@gmail.com',
+      email: mockdata.verify1.email,
       password: '',
     }).end((err, res) => {
       res.should.have.status(400);

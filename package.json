@@ -10,7 +10,8 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "create": "babel-node Server/src/services/tables.js",
     "drop": "babel-node Server/src/services/drop.js",
-    "insertDummies": "babel-node Server/src/mockdata/dummies.js"
+    "insertDummies": "babel-node Server/src/mockdata/dummies.js",
+    "generatetoken": "babel-node Server/src/mockdata/tokens.js"
   },
   "repository": {
     "type": "git",

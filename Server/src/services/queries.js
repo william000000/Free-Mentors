@@ -17,7 +17,10 @@ const users = {
 };
 const mentorships = {
   isMentorshipExist: `SELECT * FROM mentorships WHERE  mentorId=$1 and questions=$2 and menteeId=$3`,
-  createMentorship: `INSERT INTO mentorships(mentorId, mentorEmail, menteeId, questions, menteeEmail) VALUES($1,$2,$3,$4,$5) RETURNING *`
+  createMentorship: `INSERT INTO mentorships(mentorId, mentorEmail, menteeId, questions, menteeEmail) VALUES($1,$2,$3,$4,$5) RETURNING *`,
+  isSessionRequested: `SELECT * FROM mentorships WHERE id=$1`,
+  acceptSession: `UPDATE mentorships SET status='accepted' WHERE id=$1 RETURNING *`,
+  rejectSession: `UPDATE mentorships SET status='rejected' WHERE id=$1 RETURNING *`
 
 };
 
