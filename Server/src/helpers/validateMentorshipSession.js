@@ -1,4 +1,4 @@
-const mentorId = /^[0-9]$/;
+const mentorId = /^[0-9]*$/;
 const questions = /^[a-zA-Z0-9_ ]+[\W\S]*$/;
 
 class ValidationSessionRequest {

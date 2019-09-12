@@ -98,25 +98,11 @@ describe("MentorShip Session Request tests", () => {
     chai.request(app).post(`/api/v2/sessions`)
       .set('auth', mockdata.user1)
       .send({
-        mentorId: 0,
+        mentorId: 8,
         questions: "hhfddfdfxdx"
       })
       .end((err, res) => {
         res.should.have.status(404);
-        res.body.should.be.an("object");
-        done();
-      });
-  });
-
-  it("should not be able to create mentorship session when he is admin ", (done) => {
-    chai.request(app).post(`/api/v2/sessions`)
-      .set('auth', mockdata.adminUser2)
-      .send({
-        mentorId: 1,
-        questions: "vhvhvhvhvhvh"
-      })
-      .end((err, res) => {
-        res.should.have.status(403);
         res.body.should.be.an("object");
         done();
       });
@@ -233,7 +219,7 @@ describe("MentorShip Session Request tests", () => {
 
   it("should be not able to view all mentorship session requested when no session done against user", (done) => {
     chai.request(app).get(`/api/v2/sessions/`)
-      .set('auth', mockdata.adminUser2)
+      .set('auth', mockdata.signupUser)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.an("object");

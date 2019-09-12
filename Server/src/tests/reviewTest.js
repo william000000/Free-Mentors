@@ -22,6 +22,32 @@ describe("Mentee Review Mentor tests", () => {
         done();
       });
   });
+  it("should not be able to review a mentorship after session when method incorrect", (done) => {
+    chai.request(app).put(`/api/v2/sessions/${2}/review`)
+      .set('auth', mockdata.user3)
+      .send({
+        score: 3,
+        remark: 'hgshgdhs sjfgs?'
+      })
+      .end((err, res) => {
+        res.should.have.status(405);
+
+        done();
+      });
+  });
+  it("should not be able to review a mentorship after session when method incorrect", (done) => {
+    chai.request(app).get(`/api/v2/sessions/${2}/review`)
+      .set('auth', mockdata.user3)
+      .send({
+        score: 3,
+        remark: 'hgshgdhs sjfgs?'
+      })
+      .end((err, res) => {
+        res.should.have.status(405);
+
+        done();
+      });
+  });
 
   it("should be not able to review a mentorship after session when no score ", (done) => {
     chai.request(app).post(`/api/v2/sessions/${2}/review`)

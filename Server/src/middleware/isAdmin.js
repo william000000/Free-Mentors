@@ -13,15 +13,14 @@ const IsAdmin = (req, res, next) => {
           status: 401,
           error: 'Invalid token'
         });
-      } else {
-        if (result.isAdmin === false) {
-          return res.status(403).json({
-            status: 403,
-            error: 'Forbidden'
-          });
-        }
-        next();
       }
+      if (result.isAdmin === 'false') {
+        return res.status(403).json({
+          status: 403,
+          error: 'Forbidden'
+        });
+      }
+      next();
     });
   } catch (err) {
     res.status(400).json({

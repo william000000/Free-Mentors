@@ -112,15 +112,7 @@ describe("Admin tests", () => {
         done();
       });
   });
-  it("Admin should not be able to change user to mentor when he is not an admin ", (done) => {
-    chai.request(app).patch(`/api/v2/user/${mockdata.verify1.id}`)
-      .set('auth', mockdata.user1)
-      .end((err, res) => {
-        res.should.have.status(403);
-        res.body.should.be.an("object");
-        done();
-      });
-  });
+
   it("Admin should not be able to change user to mentor when params not integer", (done) => {
     const userId = 'hd';
     chai.request(app).patch(`/api/v2/user/${userId}`)

@@ -11,12 +11,14 @@ const users = {
   findByid: `SELECT * FROM users WHERE id=$1`,
   userToMentor: `UPDATE users SET isMentor=$1 WHERE id=$2 RETURNING *`,
   isAdmin: `SELECT isadmin FROM users WHERE isadmin='true'`,
-  findAllMentors: `SELECT firstname, lastname, email, address, bio, occupation, expertise, isMentor FROM users WHERE isMentor='true'`,
+  findAllMentors: `SELECT id, firstname, lastname, email, address, bio, occupation, expertise, isMentor FROM users WHERE isMentor='true'`,
   findOneMentor: `SELECT * FROM users WHERE isMentor='true' AND id=$1`,
-  isMentorExist: `SELECT * FROM users WHERE id=$1 and isMentor='true'`
+  isMentorExist: `SELECT * FROM users WHERE id=$1 and isMentor='true'`,
+  isUserMentor: `SELECT * FROM users WHERE isMentor='true' AND email=$1`,
+  isUserAdmin: `SELECT * FROM users WHERE isadmin='true'`,
 };
 const mentorships = {
-  isMentorshipExist: `SELECT * FROM mentorships WHERE  mentorId=$1 and questions=$2 and menteeId=$3`,
+  isMentorshipExist: `SELECT * FROM mentorships WHERE mentorId=$1 and questions=$2 and menteeId=$3`,
   createMentorship: `INSERT INTO mentorships(mentorId, mentorEmail, menteeId, questions, menteeEmail) VALUES($1,$2,$3,$4,$5) RETURNING *`,
   isSessionRequested: `SELECT * FROM mentorships WHERE id=$1`,
   acceptSession: `UPDATE mentorships SET status='accepted' WHERE id=$1 RETURNING *`,
