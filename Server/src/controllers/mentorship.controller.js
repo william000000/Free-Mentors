@@ -67,11 +67,23 @@ class MentorShipController {
   * @param {object} req
   * @param {object} res
   */
-  static viewAllMentorshipSessionRequest(req, res) {
-    const whoLoggedIn = req.user.email;
-    const Sessions = session.filter(s => s.mentorEmail === whoLoggedIn || s.menteeEmail === whoLoggedIn);
-    if (Sessions.length > 0) { return res.status(200).json({ status: 200, message: "retrieved successfully", data: Sessions }); }
-    return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
+  static async viewAllMentorshipSessionRequest(req, res) {
+    try {
+      const whoLoggedIn = req.user.email;
+      const sessionUser = await executor(myQuery.mentorships.allSessionsForMentee, [whoLoggedIn]);
+      const sessionMentor = await executor(myQuery.mentorships.allSessionsForMentor, [whoLoggedIn]);
+
+      if (!sessionMentor[0] && !sessionUser[0]) {
+        return res.status(404).json({ status: 404, data: 'No Mentorship session found!' });
+      }
+      if (sessionUser[0]) {
+        return res.status(200).json({ status: 200, message: "retrieved successfully", data: sessionUser });
+      }
+      return res.status(200).json({ status: 200, message: "retrieved successfully", data: sessionMentor });
+    } catch (err) {
+      return res.status(400).json({ status: 400, error: err.message });
+    }
   }
+
 }
 export default MentorShipController;
