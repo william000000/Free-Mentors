@@ -99,4 +99,4 @@ const existUser = {
 const invalidToken = 'iJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3ROYW1lIjoid2lsbH';
 
 
-export default { user1, adminUser2, user3, mentorUser4, mentorUser5, verify1, verifyAdmin, verify3, verify4, verify5, invalidToken, verifyNewUser, existUser };
+export default { user1, adminUser2, user3, mentorUser4, mentorUser5, verify1, verifyAdmin, verify3, verify4, verify5, invalidToken, verifyNewUser, existUser, signupUser };
