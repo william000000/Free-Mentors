@@ -35,9 +35,9 @@ const insertDummies = async () => {
 
   ];
 
-  const insertAdmin = `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('willy', 'tony', 'admin@gmail.com','$2b$10$wMMYrM3BLcfZ2EdHd24tuO8bdgaBdn7jQYn1IeD8iTMy28l.NhBgG', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse', 'false', 'true')`;
+  const insertAdmin = `INSERT INTO users(firstname, lastname, email, password, address, bio, occupation, expertise, isMentor, isAdmin) VALUES('willy', 'tony', 'admin@gmail.com','$2b$10$DIZ/0JafQi4EAGI3zpj3wuJROX//nLng/uL0iVfr8plgUccPNX5Vq', 'Kigali','Am doctor of Teeth', 'Nurser', 'Nurse', 'false', 'true')`;
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
     await pool.query(insertAdmin);
   }
 
