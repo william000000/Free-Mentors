@@ -60,7 +60,7 @@ describe("Mentors tests", () => {
   it("should be able to view all mentors when no both variable and value of token ", (done) => {
     chai.request(app).get(`/api/v2/mentors`)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(401);
         res.body.should.be.an("object");
         done();
       });
@@ -152,7 +152,7 @@ describe("Mentors tests", () => {
     chai.request(app).get(`/api/v2/mentors/${mentorId}`)
       .set('auth', '')
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(401);
         res.body.should.be.an("object");
         done();
       });

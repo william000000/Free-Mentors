@@ -87,7 +87,7 @@ describe("Admin tests", () => {
     chai.request(app).patch(`/api/v2/user/${mockdata.verify1.id}`)
       .set('auth', '')
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(401);
         res.body.should.be.an("object");
         done();
       });
