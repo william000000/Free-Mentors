@@ -6,7 +6,7 @@
     "description": "Free Mentor",
     "contact": {}
   },
-  "host": "freementors.herokuapp.com/",
+  "host": "freementors.herokuapp.com",
   "basePath": "/api/v2",
   "tags": [
     {
